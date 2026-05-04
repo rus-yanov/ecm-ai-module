@@ -1,0 +1,22 @@
+default:
+  review_threshold: 0.7
+  ocr_min_confidence: 0.6
+
+document_types:
+  CONTRACT:
+    attributes:
+      amount: 0.85
+      contractor: 0.80
+      contract_date: 0.75
+      contract_number: 0.75
+  INVOICE:
+    attributes:
+      amount_with_vat: 0.90
+      supplier: 0.80
+  ACT:
+    attributes:
+      amount: 0.85
+  LETTER:
+    attributes: {}
+  ORDER:
+    attributes: {}
