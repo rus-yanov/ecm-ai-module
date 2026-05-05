@@ -129,9 +129,35 @@ class OcrService:
     # Public API
     # ------------------------------------------------------------------
 
+    @staticmethod
+    def _recognize_text_file(file_bytes: bytes, elapsed: float) -> OcrResult:
+        """Fast path for plain-text uploads: no OCR needed."""
+        text = file_bytes.decode("utf-8", errors="replace").strip()
+        lines = [ln for ln in text.splitlines() if ln.strip()]
+        blocks = [
+            OcrBlock(text=line, confidence=1.0, bbox=[0.0, float(i), 1.0, float(i + 1)])
+            for i, line in enumerate(lines)
+        ]
+        return OcrResult(
+            blocks=blocks,
+            avg_confidence=1.0 if blocks else 0.0,
+            page_count=1,
+            processing_time_sec=elapsed,
+        )
+
     async def recognize(self, file_bytes: bytes, filename: str) -> OcrResult:
         start = time.monotonic()
         ext = Path(filename).suffix.lower()
+
+        if ext == ".txt":
+            result = self._recognize_text_file(file_bytes, time.monotonic() - start)
+            logger.info(
+                "OCR completed (text passthrough)",
+                filename=filename,
+                blocks_count=len(result.blocks),
+                processing_time_sec=round(result.processing_time_sec, 3),
+            )
+            return result
 
         pages = self._load_pages(file_bytes, ext)
         processed = [self._preprocess(p) for p in pages]
