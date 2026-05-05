@@ -52,3 +52,6 @@ strict = false
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 asyncio_mode = "auto"
+markers = [
+    "integration: live tests requiring external services (deselect with '-m not integration')",
+]
