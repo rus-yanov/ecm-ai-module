@@ -145,13 +145,16 @@ class OcrService:
             processing_time_sec=elapsed,
         )
 
-    async def recognize(self, file_bytes: bytes, filename: str) -> OcrResult:
+    async def recognize(
+        self, file_bytes: bytes, filename: str, document_id: str = ""
+    ) -> OcrResult:
+        log = logger.bind(document_id=document_id) if document_id else logger
         start = time.monotonic()
         ext = Path(filename).suffix.lower()
 
         if ext == ".txt":
             result = self._recognize_text_file(file_bytes, time.monotonic() - start)
-            logger.info(
+            log.info(
                 "OCR completed (text passthrough)",
                 filename=filename,
                 blocks_count=len(result.blocks),
@@ -168,7 +171,7 @@ class OcrService:
         avg_conf = sum(b.confidence for b in blocks) / len(blocks) if blocks else 0.0
         elapsed = time.monotonic() - start
 
-        logger.info(
+        log.info(
             "OCR completed",
             filename=filename,
             page_count=len(pages),

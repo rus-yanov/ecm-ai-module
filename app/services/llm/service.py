@@ -134,8 +134,9 @@ class LlmService:
     # ------------------------------------------------------------------
 
     async def classify_and_extract(
-        self, text: str, schema: dict
+        self, text: str, schema: dict, document_id: str = ""
     ) -> tuple[DocumentType, float, list[ExtractedAttribute]]:
+        log = logger.bind(document_id=document_id) if document_id else logger
         prompt = self._build_prompt(text, schema)
         start = time.monotonic()
 
@@ -156,7 +157,7 @@ class LlmService:
                 )
                 response.raise_for_status()
         except httpx.HTTPError as exc:
-            logger.error("Ollama request failed", error=str(exc))
+            log.error("Ollama request failed", error=str(exc))
             return _FALLBACK
 
         elapsed = time.monotonic() - start
@@ -164,12 +165,12 @@ class LlmService:
         try:
             raw_json: str = response.json()["message"]["content"]
         except (KeyError, ValueError) as exc:
-            logger.error("Unexpected Ollama response shape", error=str(exc))
+            log.error("Unexpected Ollama response shape", error=str(exc))
             return _FALLBACK
 
         doc_type, type_confidence, attributes = self._parse_response(raw_json)
 
-        logger.info(
+        log.info(
             "LLM classify_and_extract",
             model=settings.ollama_model,
             text_length=len(text),
