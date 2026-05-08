@@ -29,4 +29,9 @@ document_types:
       operation_type_code: 0.70
       items_description: 0.65
   ORDER:
-    attributes: {}
+    attributes:
+      order_number: 0.82
+      order_date: 0.85
+      organization_name: 0.78
+      order_subject: 0.75
+      signatory_position: 0.70
