@@ -30,10 +30,11 @@ _SCHEMAS: dict[str, dict] = {
             "act_number", "act_date", "customer", "executor", "subject", "amount",
         ],
     },
-    "letter": {
-        "type": "LETTER",
+    "waybill": {
+        "type": "WAYBILL",
         "attributes": [
-            "outgoing_number", "document_date", "sender", "summary", "addressee",
+            "document_number", "document_date", "sender_department",
+            "receiver_department", "operation_type_code", "items_description",
         ],
     },
     "order": {
@@ -71,7 +72,7 @@ _DICTIONARIES: dict[str, list[str]] = {
         "ЗАО «КонсалтПлюс»",
         "АО «ДатаСистемс»",
     ],
-    "document_types": ["CONTRACT", "INVOICE", "ACT", "LETTER", "ORDER"],
+    "document_types": ["CONTRACT", "INVOICE", "ACT", "WAYBILL", "ORDER"],
 }
 
 

@@ -8,7 +8,7 @@ class DocumentType(str, Enum):
     CONTRACT = "CONTRACT"
     INVOICE = "INVOICE"
     ACT = "ACT"
-    LETTER = "LETTER"
+    WAYBILL = "WAYBILL"
     ORDER = "ORDER"
     UNKNOWN = "UNKNOWN"
 

@@ -40,13 +40,13 @@ Example 6 (ACT, partial):
 Input: "Акт №55 от 10 января 2024 г.\\nЗаказчик: АО «Медиагрупп»\\nВыполнены работы по техническому обслуживанию серверного оборудования."
 Output: {"document_type":"ACT","type_confidence":0.94,"attributes":[{"name":"act_number","value":"55","confidence":0.99},{"name":"act_date","value":"2024-01-10","confidence":0.98},{"name":"customer","value":"АО «Медиагрупп»","confidence":0.98},{"name":"executor","value":null,"confidence":0.0},{"name":"subject","value":"техническое обслуживание серверного оборудования","confidence":0.91},{"name":"amount","value":null,"confidence":0.0}]}
 
-Example 7 (LETTER):
-Input: "Исх. №147 от 12.03.2024\\nАО «Промснаб»\\nДиректору ООО «ЛогистПлюс» Петрову В.И.\\nУважаемый Василий Иванович, направляем Вам коммерческое предложение на поставку оборудования согласно Вашему запросу №89 от 05.03.2024."
-Output: {"document_type":"LETTER","type_confidence":0.97,"attributes":[{"name":"outgoing_number","value":"147","confidence":0.99},{"name":"document_date","value":"2024-03-12","confidence":0.99},{"name":"sender","value":"АО «Промснаб»","confidence":0.97},{"name":"summary","value":"коммерческое предложение на поставку оборудования","confidence":0.93},{"name":"addressee","value":"Петров В.И., директор ООО «ЛогистПлюс»","confidence":0.96}]}
+Example 7 (WAYBILL, full):
+Input: "Форма М-11 Требование-накладная № 71 от 28.03.2025 Отправитель: ск.776 Получатель: 099-2кл Код операции: 2042307 Наименование: Кабель ВВГ 3х2.5, 50м"
+Output: {"document_type":"WAYBILL","type_confidence":0.93,"attributes":[{"name":"document_number","value":"71","confidence":0.99},{"name":"document_date","value":"2025-03-28","confidence":0.97},{"name":"sender_department","value":"ск.776","confidence":0.94},{"name":"receiver_department","value":"099-2кл","confidence":0.94},{"name":"operation_type_code","value":"2042307","confidence":0.99},{"name":"items_description","value":"Кабель ВВГ 3х2.5, 50м","confidence":0.97}]}
 
-Example 8 (LETTER, partial):
-Input: "Вх. обработка. Письмо без номера от 2024-04-01\\nОт: Министерство экономического развития\\nО предоставлении статистических данных за 1 квартал 2024 года."
-Output: {"document_type":"LETTER","type_confidence":0.91,"attributes":[{"name":"outgoing_number","value":null,"confidence":0.0},{"name":"document_date","value":"2024-04-01","confidence":0.97},{"name":"sender","value":"Министерство экономического развития","confidence":0.96},{"name":"summary","value":"предоставление статистических данных за 1 квартал 2024","confidence":0.92},{"name":"addressee","value":null,"confidence":0.0}]}
+Example 8 (WAYBILL, partial — no operation code):
+Input: "Требование-накладная № 15 от 01.04.2025\\nОтправитель: цех 101\\nПолучатель: склад 3\\nПозиции: Краска алкидная ПФ-115, 10 л; Кисть малярная, 5 шт"
+Output: {"document_type":"WAYBILL","type_confidence":0.91,"attributes":[{"name":"document_number","value":"15","confidence":0.99},{"name":"document_date","value":"2025-04-01","confidence":0.98},{"name":"sender_department","value":"цех 101","confidence":0.96},{"name":"receiver_department","value":"склад 3","confidence":0.96},{"name":"operation_type_code","value":null,"confidence":0.0},{"name":"items_description","value":"Краска алкидная ПФ-115, 10 л; Кисть малярная, 5 шт","confidence":0.94}]}
 
 Example 9 (ORDER):
 Input: "ПРИКАЗ №П-2024-156 от 01.07.2024\\nО введении в действие регламента информационной безопасности\\nПодписант: Генеральный директор Смирнов А.В.\\nСрок исполнения: 01.08.2024"
@@ -81,7 +81,7 @@ class LlmService:
         block2 = (
             'Expected JSON response schema:\n'
             '{\n'
-            '  "document_type": "one of: CONTRACT, INVOICE, ACT, LETTER, ORDER, UNKNOWN",\n'
+            '  "document_type": "one of: CONTRACT, INVOICE, ACT, WAYBILL, ORDER, UNKNOWN",\n'
             '  "type_confidence": <float 0.0-1.0>,\n'
             '  "attributes": [\n'
             '    {"name": "<attribute name>", "value": "<extracted value or null>", '

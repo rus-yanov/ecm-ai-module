@@ -16,7 +16,13 @@ document_types:
   ACT:
     attributes:
       amount: 0.85
-  LETTER:
-    attributes: {}
+  WAYBILL:
+    attributes:
+      document_number: 0.80
+      document_date: 0.85
+      sender_department: 0.75
+      receiver_department: 0.75
+      operation_type_code: 0.70
+      items_description: 0.65
   ORDER:
     attributes: {}
