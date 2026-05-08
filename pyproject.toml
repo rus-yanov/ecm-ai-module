@@ -19,6 +19,11 @@ dependencies = [
     "paddleocr>=3.5.0",
     "opencv-python-headless>=4.13.0.92",
     "pillow>=12.2.0",
+    "fpdf2>=2.8.7",
+    "faker>=40.15.0",
+    "numpy>=2.3.5",
+    "pymupdf>=1.27.2.3",
+    "tqdm>=4.67.3",
 ]
 
 

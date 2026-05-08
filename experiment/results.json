@@ -1,0 +1,602 @@
+[
+  {
+    "filename": "INVOICE_001.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "INVOICE",
+    "type_correct": true,
+    "type_confidence": 0.95,
+    "requires_manual_review": true,
+    "processing_time_sec": 38.15181629196741,
+    "attributes": {
+      "invoice_number": {
+        "expected": "865",
+        "extracted": "865",
+        "match": true,
+        "confidence": 0.8731487296284348
+      },
+      "invoice_date": {
+        "expected": "2025-11-18",
+        "extracted": "2025-11-18",
+        "match": true,
+        "confidence": 0.8611487296284348
+      },
+      "seller_name": {
+        "expected": "РАО «Михеев, Пестова и Соловьева»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.07914872962843489
+      },
+      "seller_inn": {
+        "expected": "7776475938",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.07914872962843489
+      },
+      "buyer_name": {
+        "expected": "ИП «Матвеев Лукина»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7719489241",
+        "extracted": "7719489241",
+        "match": true,
+        "confidence": 0.8551487296284348
+      },
+      "amount_with_vat": {
+        "expected": 779711.93,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.07914872962843489
+      },
+      "vat_amount": {
+        "expected": 129951.99,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.07914872962843489
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_002.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 12.356960458913818,
+    "attributes": {
+      "invoice_number": {
+        "expected": "138",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2023-10-02",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "ИП «Фролов»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7777763170",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "НПО «Журавлева, Хохлова и Наумова»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7707439150",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 1144869.69,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 190811.61,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_003.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 16.93111841683276,
+    "attributes": {
+      "invoice_number": {
+        "expected": "979",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2026-03-20",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "РАО «Романов»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7752449390",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "Блинова Инкорпорэйтед",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7766858784",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 1728272.02,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 288045.34,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_004.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 39.51916916691698,
+    "attributes": {
+      "invoice_number": {
+        "expected": "244",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2024-01-23",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "Осипов и партнеры",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7797919074",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "Абрамов Инкорпорэйтед",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7778876232",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 1191392.21,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 198565.37,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_005.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 17.281294791959226,
+    "attributes": {
+      "invoice_number": {
+        "expected": "242",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2024-01-21",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "ООО «Вишняков»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7772110684",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "АО «Голубева»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7785421430",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 617047.69,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 102841.28,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_006.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "INVOICE",
+    "type_correct": true,
+    "type_confidence": 0.95,
+    "requires_manual_review": true,
+    "processing_time_sec": 39.63460620888509,
+    "attributes": {
+      "invoice_number": {
+        "expected": "638",
+        "extracted": "638",
+        "match": true,
+        "confidence": 0.8713415599068006
+      },
+      "invoice_date": {
+        "expected": "2025-03-20",
+        "extracted": "2025-03-20",
+        "match": true,
+        "confidence": 0.8773415599068006
+      },
+      "seller_name": {
+        "expected": "Мазда Соллерс Мануфэкчуринг Рус",
+        "extracted": "АО«Горшков, Макарова»",
+        "match": false,
+        "confidence": 0.8653415599068006
+      },
+      "seller_inn": {
+        "expected": "7780730215",
+        "extracted": "7719303642",
+        "match": false,
+        "confidence": 0.8773415599068006
+      },
+      "buyer_name": {
+        "expected": "ОАО «Горшков, Мишин и Макарова»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0893415599068006
+      },
+      "buyer_inn": {
+        "expected": "7719303642",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0893415599068006
+      },
+      "amount_with_vat": {
+        "expected": 522058.36,
+        "extracted": "13163168.0",
+        "match": false,
+        "confidence": 0.8593415599068006
+      },
+      "vat_amount": {
+        "expected": 87009.73,
+        "extracted": "8700973.0",
+        "match": false,
+        "confidence": 0.8533415599068006
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_007.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 17.513391749933362,
+    "attributes": {
+      "invoice_number": {
+        "expected": "813",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2025-09-23",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "НПО «Хохлова»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7740029755",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "ИП «Смирнова»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7736881398",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 1154032.92,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 192338.82,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_008.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 18.799094666959718,
+    "attributes": {
+      "invoice_number": {
+        "expected": "332",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2024-04-26",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "НПО «Большакова Белов»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7718159083",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "РАО «Беспалов»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7761318609",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 1896512.74,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 316085.46,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_009.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "INVOICE",
+    "type_correct": true,
+    "type_confidence": 0.99,
+    "requires_manual_review": true,
+    "processing_time_sec": 35.97386633302085,
+    "attributes": {
+      "invoice_number": {
+        "expected": "233",
+        "extracted": "233",
+        "match": true,
+        "confidence": 0.8813548775580193
+      },
+      "invoice_date": {
+        "expected": "2024-01-11",
+        "extracted": "2024-01-11",
+        "match": true,
+        "confidence": 0.8573548775580193
+      },
+      "seller_name": {
+        "expected": "АО «Блинов, Горбунова и Беляев»",
+        "extracted": "АО«Блинов, Бунова и Беляев»",
+        "match": true,
+        "confidence": 0.8753548775580193
+      },
+      "seller_inn": {
+        "expected": "7712383607",
+        "extracted": "7712383607",
+        "match": true,
+        "confidence": 0.8573548775580193
+      },
+      "buyer_name": {
+        "expected": "НПО «Гуляев, Попова и Романова»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.08735487755801943
+      },
+      "buyer_inn": {
+        "expected": "7736173048",
+        "extracted": "7736173048",
+        "match": true,
+        "confidence": 0.8573548775580193
+      },
+      "amount_with_vat": {
+        "expected": 750267.57,
+        "extracted": "750267.57",
+        "match": true,
+        "confidence": 0.8813548775580193
+      },
+      "vat_amount": {
+        "expected": 125044.59,
+        "extracted": "125044.59",
+        "match": true,
+        "confidence": 0.8813548775580193
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "INVOICE_010.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 25.219766832888126,
+    "attributes": {
+      "invoice_number": {
+        "expected": "475",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "invoice_date": {
+        "expected": "2024-09-26",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_name": {
+        "expected": "ИП «Егоров-Давыдов»",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "seller_inn": {
+        "expected": "7705879158",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_name": {
+        "expected": "Родионова Инк",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "buyer_inn": {
+        "expected": "7762762230",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount_with_vat": {
+        "expected": 1232232.24,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "vat_amount": {
+        "expected": 205372.04,
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  }
+]

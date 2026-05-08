@@ -1,32 +1,37 @@
 default:
   review_threshold: 0.7
   ocr_min_confidence: 0.6
-
 document_types:
   PAYMENT:
     attributes:
       document_number: 0.85
       document_date: 0.85
-      payer_name: 0.80
-      payer_inn: 0.90
-      receiver_name: 0.80
-      receiver_inn: 0.90
-      amount: 0.90
-      payment_purpose: 0.70
+      payer_name: 0.8
+      payer_inn: 0.9
+      receiver_name: 0.8
+      receiver_inn: 0.9
+      amount: 0.9
+      payment_purpose: 0.7
   INVOICE:
     attributes:
-      amount_with_vat: 0.90
-      supplier: 0.80
+      amount_with_vat: 0.85
+      buyer_inn: 0.65
+      buyer_name: 0.75
+      invoice_date: 0.65
+      invoice_number: 0.65
+      seller_inn: 0.65
+      seller_name: 0.65
+      vat_amount: 0.65
   ACT:
     attributes:
       amount: 0.85
   WAYBILL:
     attributes:
-      document_number: 0.80
+      document_number: 0.8
       document_date: 0.85
       sender_department: 0.75
       receiver_department: 0.75
-      operation_type_code: 0.70
+      operation_type_code: 0.7
       items_description: 0.65
   ORDER:
     attributes:
@@ -34,4 +39,4 @@ document_types:
       order_date: 0.85
       organization_name: 0.78
       order_subject: 0.75
-      signatory_position: 0.70
+      signatory_position: 0.7

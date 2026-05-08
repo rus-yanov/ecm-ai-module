@@ -1,0 +1,145 @@
+{
+  "type_classification": {
+    "overall_accuracy": 0.3,
+    "per_type_accuracy": {
+      "INVOICE": 0.3,
+      "ACT": 0.0,
+      "ORDER": 0.0,
+      "WAYBILL": 0.0,
+      "PAYMENT": 0.0
+    },
+    "confusion_matrix": {
+      "INVOICE": {
+        "INVOICE": 3,
+        "ACT": 0,
+        "ORDER": 0,
+        "WAYBILL": 0,
+        "PAYMENT": 0,
+        "UNKNOWN": 7
+      },
+      "ACT": {
+        "INVOICE": 0,
+        "ACT": 0,
+        "ORDER": 0,
+        "WAYBILL": 0,
+        "PAYMENT": 0,
+        "UNKNOWN": 0
+      },
+      "ORDER": {
+        "INVOICE": 0,
+        "ACT": 0,
+        "ORDER": 0,
+        "WAYBILL": 0,
+        "PAYMENT": 0,
+        "UNKNOWN": 0
+      },
+      "WAYBILL": {
+        "INVOICE": 0,
+        "ACT": 0,
+        "ORDER": 0,
+        "WAYBILL": 0,
+        "PAYMENT": 0,
+        "UNKNOWN": 0
+      },
+      "PAYMENT": {
+        "INVOICE": 0,
+        "ACT": 0,
+        "ORDER": 0,
+        "WAYBILL": 0,
+        "PAYMENT": 0,
+        "UNKNOWN": 0
+      }
+    }
+  },
+  "attribute_extraction": {
+    "per_type": {
+      "INVOICE": {
+        "amount_with_vat": {
+          "precision": 0.5,
+          "recall": 0.1,
+          "f1": 0.167,
+          "matched": 1,
+          "extracted": 2,
+          "expected": 10
+        },
+        "buyer_inn": {
+          "precision": 1.0,
+          "recall": 0.2,
+          "f1": 0.333,
+          "matched": 2,
+          "extracted": 2,
+          "expected": 10
+        },
+        "buyer_name": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "matched": 0,
+          "extracted": 0,
+          "expected": 10
+        },
+        "invoice_date": {
+          "precision": 1.0,
+          "recall": 0.3,
+          "f1": 0.462,
+          "matched": 3,
+          "extracted": 3,
+          "expected": 10
+        },
+        "invoice_number": {
+          "precision": 1.0,
+          "recall": 0.3,
+          "f1": 0.462,
+          "matched": 3,
+          "extracted": 3,
+          "expected": 10
+        },
+        "seller_inn": {
+          "precision": 0.5,
+          "recall": 0.1,
+          "f1": 0.167,
+          "matched": 1,
+          "extracted": 2,
+          "expected": 10
+        },
+        "seller_name": {
+          "precision": 0.5,
+          "recall": 0.1,
+          "f1": 0.167,
+          "matched": 1,
+          "extracted": 2,
+          "expected": 10
+        },
+        "vat_amount": {
+          "precision": 0.5,
+          "recall": 0.1,
+          "f1": 0.167,
+          "matched": 1,
+          "extracted": 2,
+          "expected": 10
+        }
+      }
+    },
+    "avg_f1_per_type": {
+      "INVOICE": 0.241
+    }
+  },
+  "confidence_calibration": {
+    "mean_confidence_correct": 0.9633,
+    "mean_confidence_incorrect": 0.0,
+    "pct_correct_with_high_confidence": 1.0
+  },
+  "manual_review": {
+    "review_rate": 0.3,
+    "useful_flag_rate": 1.0,
+    "total_flagged": 3,
+    "useful_flags": 3
+  },
+  "performance": {
+    "mean_sec": 26.14,
+    "median_sec": 25.22,
+    "p95_sec": 39.63,
+    "pct_within_30s": 0.6,
+    "total_docs": 10
+  }
+}
