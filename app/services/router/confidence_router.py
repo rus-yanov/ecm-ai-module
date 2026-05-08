@@ -22,7 +22,7 @@ class ConfidenceRouter:
             raw = yaml.safe_load(fh)
 
         # Flatten into the shape used by route():
-        # { "CONTRACT": {"attributes": {...}}, ..., "default": {"review_threshold": ...} }
+        # { "PAYMENT": {"attributes": {...}}, ..., "default": {"review_threshold": ...} }
         self._thresholds: dict = {
             **raw.get("document_types", {}),
             "default": raw.get("default", {}),

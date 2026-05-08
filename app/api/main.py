@@ -52,7 +52,7 @@ async def healthz() -> dict:
 @app.post("/api/v1/documents/process")
 async def process_document(
     file: Annotated[UploadFile, File()],
-    schema_id: Annotated[str, Form()] = "contract",
+    schema_id: Annotated[str, Form()] = "payment",
 ) -> dict:
     import asyncio
 

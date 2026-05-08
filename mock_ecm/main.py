@@ -10,11 +10,11 @@ app = FastAPI(title="Mock ECM Server", version="0.1.0")
 # ---------------------------------------------------------------------------
 
 _SCHEMAS: dict[str, dict] = {
-    "contract": {
-        "type": "CONTRACT",
+    "payment": {
+        "type": "PAYMENT",
         "attributes": [
-            "contract_number", "contract_date", "contractor", "contractor_inn",
-            "subject", "amount", "expiry_date",
+            "document_number", "document_date", "payer_name", "payer_inn",
+            "receiver_name", "receiver_inn", "amount", "payment_purpose",
         ],
     },
     "invoice": {
@@ -72,7 +72,7 @@ _DICTIONARIES: dict[str, list[str]] = {
         "ЗАО «КонсалтПлюс»",
         "АО «ДатаСистемс»",
     ],
-    "document_types": ["CONTRACT", "INVOICE", "ACT", "WAYBILL", "ORDER"],
+    "document_types": ["PAYMENT", "INVOICE", "ACT", "WAYBILL", "ORDER"],
 }
 
 

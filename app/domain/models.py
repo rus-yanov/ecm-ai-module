@@ -5,7 +5,7 @@ from pydantic import BaseModel, model_validator
 
 
 class DocumentType(str, Enum):
-    CONTRACT = "CONTRACT"
+    PAYMENT = "PAYMENT"
     INVOICE = "INVOICE"
     ACT = "ACT"
     WAYBILL = "WAYBILL"

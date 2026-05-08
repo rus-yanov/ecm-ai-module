@@ -3,12 +3,16 @@ default:
   ocr_min_confidence: 0.6
 
 document_types:
-  CONTRACT:
+  PAYMENT:
     attributes:
-      amount: 0.85
-      contractor: 0.80
-      contract_date: 0.75
-      contract_number: 0.75
+      document_number: 0.85
+      document_date: 0.85
+      payer_name: 0.80
+      payer_inn: 0.90
+      receiver_name: 0.80
+      receiver_inn: 0.90
+      amount: 0.90
+      payment_purpose: 0.70
   INVOICE:
     attributes:
       amount_with_vat: 0.90

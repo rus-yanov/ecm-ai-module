@@ -16,13 +16,13 @@ logger = structlog.get_logger(__name__)
 _FEW_SHOT_EXAMPLES = """\
 --- EXAMPLES ---
 
-Example 1 (CONTRACT, full):
-Input: "ДОГОВОР №45-А от 15 марта 2024 года\\nООО «Альфа Технологии», ИНН 7701234567, именуемое «Исполнитель», и ЗАО «Бета Групп», ИНН 7709876543, именуемое «Заказчик», заключили настоящий договор на разработку программного обеспечения на сумму 850 000 рублей. Срок действия: до 31 декабря 2024 года."
-Output: {"document_type":"CONTRACT","type_confidence":0.98,"attributes":[{"name":"contract_number","value":"45-А","confidence":0.99},{"name":"contract_date","value":"2024-03-15","confidence":0.97},{"name":"contractor","value":"ООО «Альфа Технологии»","confidence":0.99},{"name":"contractor_inn","value":"7701234567","confidence":0.99},{"name":"subject","value":"разработка программного обеспечения","confidence":0.92},{"name":"amount","value":"850000","confidence":0.98},{"name":"expiry_date","value":"2024-12-31","confidence":0.95}]}
+Example 1 (PAYMENT, full):
+Input: "Платёжное поручение №563 от 15.04.2024 Плательщик: ООО Альфа ИНН 7701234567 Получатель: ООО Бета ИНН 7709876543 Сумма: 125000.00 Назначение платежа: Оплата по договору №12 от 01.03.2024 за услуги"
+Output: {"document_type":"PAYMENT","type_confidence":0.95,"attributes":[{"name":"document_number","value":"563","confidence":0.99},{"name":"document_date","value":"2024-04-15","confidence":0.99},{"name":"payer_name","value":"ООО Альфа","confidence":0.97},{"name":"payer_inn","value":"7701234567","confidence":0.99},{"name":"receiver_name","value":"ООО Бета","confidence":0.97},{"name":"receiver_inn","value":"7709876543","confidence":0.99},{"name":"amount","value":"125000.00","confidence":0.99},{"name":"payment_purpose","value":"Оплата по договору №12 от 01.03.2024 за услуги","confidence":0.95}]}
 
-Example 2 (CONTRACT, partial — missing amount):
-Input: "Договор о сотрудничестве №12 от 01.02.2024\\nМежду ИП Иванов А.А., ИНН 500100200300, и ООО «Ромашка», ИНН 5001234567. Предмет: поставка канцелярских товаров."
-Output: {"document_type":"CONTRACT","type_confidence":0.95,"attributes":[{"name":"contract_number","value":"12","confidence":0.99},{"name":"contract_date","value":"2024-02-01","confidence":0.98},{"name":"contractor","value":"ИП Иванов А.А.","confidence":0.97},{"name":"contractor_inn","value":"500100200300","confidence":0.99},{"name":"subject","value":"поставка канцелярских товаров","confidence":0.95},{"name":"amount","value":null,"confidence":0.0},{"name":"expiry_date","value":null,"confidence":0.0}]}
+Example 2 (PAYMENT, partial — missing receiver_inn):
+Input: "Платёжное поручение №87 от 03.01.2024\\nПлательщик: ИП Иванов А.А., ИНН 500100200300\\nПолучатель: ФНС России\\nСумма: 15 000 руб.\\nНазначение: Налог на доходы физических лиц"
+Output: {"document_type":"PAYMENT","type_confidence":0.93,"attributes":[{"name":"document_number","value":"87","confidence":0.99},{"name":"document_date","value":"2024-01-03","confidence":0.98},{"name":"payer_name","value":"ИП Иванов А.А.","confidence":0.97},{"name":"payer_inn","value":"500100200300","confidence":0.99},{"name":"receiver_name","value":"ФНС России","confidence":0.97},{"name":"receiver_inn","value":null,"confidence":0.0},{"name":"amount","value":"15000.00","confidence":0.96},{"name":"payment_purpose","value":"Налог на доходы физических лиц","confidence":0.95}]}
 
 Example 3 (INVOICE, full):
 Input: "СЧЁТ-ФАКТУРА №СФ-2024-0891 от 20.04.2024\\nПоставщик: ООО «Технопром», ИНН 6612345678\\nПокупатель: АО «Горизонт», ИНН 7723456789\\nСумма с НДС: 236 000,00 руб. НДС 20%: 39 333,33 руб."
@@ -81,7 +81,7 @@ class LlmService:
         block2 = (
             'Expected JSON response schema:\n'
             '{\n'
-            '  "document_type": "one of: CONTRACT, INVOICE, ACT, WAYBILL, ORDER, UNKNOWN",\n'
+            '  "document_type": "one of: PAYMENT, INVOICE, ACT, WAYBILL, ORDER, UNKNOWN",\n'
             '  "type_confidence": <float 0.0-1.0>,\n'
             '  "attributes": [\n'
             '    {"name": "<attribute name>", "value": "<extracted value or null>", '
