@@ -1,11 +1,14 @@
 """Experiment runner for ECM AI Module.
 
-Processes corpus/scanned/ through the full pipeline, compares against
-corpus/ground_truth.json, computes metrics, and suggests threshold
-calibration adjustments.
+Two-track experiment:
+  default (scanned)  — full OCR → LLM pipeline on corpus/scanned/
+  --raw              — Track A: fitz text extraction → LLM fast-path on corpus/raw/
+  --ocr-spot-check   — Track B: OCR quality report on real documents (no pipeline)
 
 Usage:
     uv run python scripts/run_experiment.py [--limit N] [--apply-calibration]
+    uv run python scripts/run_experiment.py --raw
+    uv run python scripts/run_experiment.py --ocr-spot-check
 """
 from __future__ import annotations
 
@@ -26,6 +29,7 @@ ROOT = Path(__file__).parent.parent
 CORPUS_DIR = ROOT / "corpus"
 EXPERIMENT_DIR = ROOT / "experiment"
 GROUND_TRUTH_PATH = CORPUS_DIR / "ground_truth.json"
+REAL_GROUND_TRUTH_PATH = EXPERIMENT_DIR / "real_ground_truth.json"
 THRESHOLDS_PATH = ROOT / "config" / "thresholds.yaml"
 
 API_BASE = "http://localhost:8000"
@@ -130,7 +134,7 @@ def _compare_value(
 
 
 # ===========================================================================
-# Document processing
+# Document processing — scanned track (default)
 # ===========================================================================
 
 def process_document(
@@ -139,7 +143,7 @@ def process_document(
     expected_type: str,
     expected_attrs: dict,
 ) -> dict:
-    """POST one document to the API and return a structured result record."""
+    """POST one scanned PDF to the API and return a structured result record."""
     scan_path = CORPUS_DIR / "scanned" / filename
     schema_id = _SCHEMA_ID.get(expected_type, expected_type.lower())
 
@@ -156,37 +160,147 @@ def process_document(
         response.raise_for_status()
         data = response.json()
     except Exception as exc:
-        return {
-            "filename": filename,
-            "expected_type": expected_type,
-            "predicted_type": None,
-            "type_correct": False,
-            "type_confidence": 0.0,
-            "requires_manual_review": False,
-            "processing_time_sec": 0.0,
-            "attributes": {
-                k: {"expected": v, "extracted": None, "match": False, "confidence": 0.0}
-                for k, v in expected_attrs.items()
-            },
-            "error": str(exc),
-        }
+        return _error_record(filename, expected_type, expected_attrs, str(exc))
 
+    return _parse_response(filename, expected_type, expected_attrs, data, elapsed)
+
+
+# ===========================================================================
+# Document processing — raw / fast-path track (--raw)
+# ===========================================================================
+
+def process_document_raw(
+    client: httpx.Client,
+    filename: str,
+    expected_type: str,
+    expected_attrs: dict,
+) -> dict:
+    """Track A: extract text from raw PDF with fitz, POST as .txt (OCR bypassed)."""
+    import fitz  # PyMuPDF — already a project dependency
+
+    raw_filename = filename.replace(".pdf", "_raw.pdf")
+    raw_path = CORPUS_DIR / "raw" / raw_filename
+    schema_id = _SCHEMA_ID.get(expected_type, expected_type.lower())
+    txt_filename = filename.replace(".pdf", ".txt")
+
+    try:
+        data_bytes = raw_path.read_bytes()
+        doc = fitz.open(stream=data_bytes, filetype="pdf")
+        text = "\n".join(p.get_text() for p in doc)
+        doc.close()
+
+        t0 = time.monotonic()
+        response = client.post(
+            f"{API_BASE}/api/v1/documents/process",
+            files={"file": (txt_filename, text.encode("utf-8"), "text/plain")},
+            data={"schema_id": schema_id},
+            timeout=90.0,
+        )
+        elapsed = time.monotonic() - t0
+        response.raise_for_status()
+        data = response.json()
+    except Exception as exc:
+        return _error_record(filename, expected_type, expected_attrs, str(exc))
+
+    return _parse_response(filename, expected_type, expected_attrs, data, elapsed)
+
+
+# ===========================================================================
+# Document processing — real documents (--real)
+# ===========================================================================
+
+def process_real_document(
+    client: httpx.Client,
+    entry: dict,
+) -> dict:
+    """Process one real document.
+
+    Text-based PDFs: extract with fitz, POST as .txt (OCR bypassed).
+    Scanned PDFs: POST PDF bytes directly (full OCR pipeline).
+    """
+    filepath = Path(entry["filepath"])
+    filename = entry["filename"]
+    doc_type = entry["document_type"]
+    expected_attrs = entry.get("attributes", {})
+    schema_id = _SCHEMA_ID.get(doc_type, doc_type.lower())
+    is_scan = entry.get("is_scan", False)
+
+    try:
+        if is_scan:
+            data_bytes = filepath.read_bytes()
+            t0 = time.monotonic()
+            response = client.post(
+                f"{API_BASE}/api/v1/documents/process",
+                files={"file": (filename, data_bytes, "application/pdf")},
+                data={"schema_id": schema_id},
+                timeout=120.0,
+            )
+            elapsed = time.monotonic() - t0
+        else:
+            import fitz as _fitz
+            doc = _fitz.open(str(filepath))
+            text = "\n".join(p.get_text() for p in doc)
+            doc.close()
+            txt_name = Path(filename).stem + ".txt"
+            t0 = time.monotonic()
+            response = client.post(
+                f"{API_BASE}/api/v1/documents/process",
+                files={"file": (txt_name, text.encode("utf-8"), "text/plain")},
+                data={"schema_id": schema_id},
+                timeout=90.0,
+            )
+            elapsed = time.monotonic() - t0
+        response.raise_for_status()
+        data = response.json()
+    except Exception as exc:
+        return _error_record(filename, doc_type, expected_attrs, str(exc))
+
+    return _parse_response(filename, doc_type, expected_attrs, data, elapsed)
+
+
+# ---------------------------------------------------------------------------
+# Shared response parsing helpers
+# ---------------------------------------------------------------------------
+
+def _error_record(
+    filename: str, expected_type: str, expected_attrs: dict, error: str
+) -> dict:
+    return {
+        "filename": filename,
+        "expected_type": expected_type,
+        "predicted_type": None,
+        "type_correct": False,
+        "type_confidence": 0.0,
+        "requires_manual_review": False,
+        "processing_time_sec": 0.0,
+        "attributes": {
+            k: {"expected": v, "extracted": None, "match": False, "confidence": 0.0}
+            for k, v in expected_attrs.items()
+        },
+        "error": error,
+    }
+
+
+def _parse_response(
+    filename: str,
+    expected_type: str,
+    expected_attrs: dict,
+    data: dict,
+    elapsed: float,
+) -> dict:
     predicted_type = data.get("document_type", "UNKNOWN")
     type_confidence = float(data.get("type_confidence", 0.0))
     requires_manual_review = bool(data.get("requires_manual_review", False))
     processing_time = float(data.get("total_processing_time_sec", elapsed))
 
-    # Index extracted attributes by name
     extracted_map: dict[str, dict] = {
         a["name"]: a for a in data.get("attributes", [])
     }
 
-    # Compare each expected attribute
     attr_results: dict[str, dict] = {}
     for attr_name, expected_val in expected_attrs.items():
         ext = extracted_map.get(attr_name)
         if ext is not None:
-            # prefer normalized_value; fall back to raw_value
             ext_val = ext.get("normalized_value") or ext.get("raw_value")
             conf = float(ext.get("confidence", 0.0))
         else:
@@ -211,6 +325,68 @@ def process_document(
         "attributes": attr_results,
         "error": data.get("error"),
     }
+
+
+# ===========================================================================
+# Track B — OCR spot-check on real documents
+# ===========================================================================
+
+_REAL_DOC_BASE = Path(
+    "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов"
+)
+_SPOT_CHECK_DIRS = {
+    "счет-фактура": _REAL_DOC_BASE / "счет-фактура",
+    "акт": _REAL_DOC_BASE / "акт",
+    "приказ": _REAL_DOC_BASE / "приказ",
+}
+
+
+def run_ocr_spot_check() -> None:
+    """Track B: OCR quality report on real documents. No pipeline, no ground truth."""
+    import asyncio
+    import random
+
+    sys.path.insert(0, str(ROOT))
+    from app.services.ocr.service import OcrService  # noqa: PLC0415
+
+    EXPERIMENT_DIR.mkdir(parents=True, exist_ok=True)
+    svc = OcrService()
+    records: list[dict] = []
+
+    async def _check_all() -> None:
+        for label, dirpath in _SPOT_CHECK_DIRS.items():
+            if not dirpath.exists():
+                print(f"  [skip] {label}: directory not found ({dirpath})")
+                continue
+
+            pdfs = sorted(dirpath.glob("*.pdf"))
+            if not pdfs:
+                print(f"  [skip] {label}: no PDF files found")
+                continue
+
+            sample = random.sample(pdfs, min(5, len(pdfs)))
+            print(f"\n  {label}/ ({len(sample)} files sampled):")
+
+            for pdf_path in sorted(sample):
+                data_bytes = pdf_path.read_bytes()
+                result = await svc.recognize(data_bytes, pdf_path.name)
+                text_preview = " ".join(b.text for b in result.blocks)[:120]
+                print(f"    {pdf_path.name}")
+                print(f"      conf={result.avg_confidence:.3f}  blocks={len(result.blocks)}")
+                print(f"      text: {text_preview!r}")
+                records.append({
+                    "category": label,
+                    "filename": pdf_path.name,
+                    "avg_confidence": round(result.avg_confidence, 4),
+                    "block_count": len(result.blocks),
+                    "text_preview": text_preview,
+                })
+
+    asyncio.run(_check_all())
+
+    out_path = EXPERIMENT_DIR / "ocr_spot_check.json"
+    out_path.write_text(json.dumps(records, ensure_ascii=False, indent=2))
+    print(f"\nOCR spot check saved → {out_path}")
 
 
 # ===========================================================================
@@ -457,7 +633,6 @@ def suggest_calibration(metrics: dict, apply: bool = False) -> None:
             current = float(dt_attrs.get(attr, default_threshold))
 
             if m["recall"] < 0.80 and m["extracted"] > 0:
-                # Attribute is extracted but low confidence blocks it → lower threshold
                 suggested = round(max(current - 0.05, 0.50), 2)
                 if suggested < current:
                     print(
@@ -467,7 +642,6 @@ def suggest_calibration(metrics: dict, apply: bool = False) -> None:
                     suggestions.append((dt, attr, current, suggested))
 
             elif m["precision"] < 0.80:
-                # Too many wrong extractions → raise threshold
                 suggested = round(min(current + 0.05, 0.95), 2)
                 if suggested > current:
                     print(
@@ -484,7 +658,6 @@ def suggest_calibration(metrics: dict, apply: bool = False) -> None:
         print(f"\n  Pass --apply-calibration to write {len(suggestions)} changes to thresholds.yaml")
         return
 
-    # Apply adjustments
     for dt, attr, _, suggested in suggestions:
         if dt not in doc_types_section:
             doc_types_section[dt] = {"attributes": {}}
@@ -511,31 +684,124 @@ def main() -> None:
                         help="Auto-apply threshold suggestions to thresholds.yaml")
     parser.add_argument("--no-servers", action="store_true",
                         help="Skip server startup checks (assume already running)")
+    parser.add_argument("--raw", action="store_true",
+                        help="Track A: fitz text extraction on raw PDFs (OCR bypassed)")
+    parser.add_argument("--ocr-spot-check", action="store_true",
+                        help="Track B: OCR quality report on real documents")
+    parser.add_argument("--real", action="store_true",
+                        help="Evaluate on real documents from experiment/real_ground_truth.json")
+    parser.add_argument("--text-only", action="store_true",
+                        help="(with --real) Skip scanned documents, process only text-based PDFs")
     args = parser.parse_args()
 
     EXPERIMENT_DIR.mkdir(parents=True, exist_ok=True)
 
+    # ------------------------------------------------------------------
+    # Track B: standalone OCR spot-check
+    # ------------------------------------------------------------------
+    if args.ocr_spot_check:
+        run_ocr_spot_check()
+        return
+
+    # ------------------------------------------------------------------
+    # Real-document track (--real)
+    # ------------------------------------------------------------------
+    if args.real:
+        if not REAL_GROUND_TRUTH_PATH.exists():
+            sys.exit(f"ERROR: {REAL_GROUND_TRUTH_PATH} not found — run build_real_ground_truth.py first")
+
+        real_gt: list[dict] = json.loads(REAL_GROUND_TRUTH_PATH.read_text())
+        if args.text_only:
+            real_gt = [r for r in real_gt if not r.get("is_scan", False)]
+            track_label = "real text-based PDFs (fast-path)"
+        else:
+            track_label = "real documents (text + scan)"
+        if args.limit:
+            real_gt = real_gt[: args.limit]
+
+        print(f"Loaded {len(real_gt)} real documents  [{track_label}]")
+
+        if not args.no_servers:
+            ensure_servers()
+
+        results_path = EXPERIMENT_DIR / "results_real.json"
+        metrics_path = EXPERIMENT_DIR / "metrics_real.json"
+
+        results: list[dict] = []
+        with httpx.Client() as client:
+            for entry in tqdm(real_gt, desc="Processing", unit="doc", leave=True):
+                result = process_real_document(client, entry)
+                results.append(result)
+                time.sleep(1)
+
+                matched = sum(1 for a in result["attributes"].values() if a["match"])
+                total_attrs = len(result["attributes"])
+                indicator = "✓" if result["type_correct"] else "✗"
+                predicted = result["predicted_type"] or "ERROR"
+                scan_tag = "[scan]" if entry.get("is_scan") else "[text]"
+                tqdm.write(
+                    f"  {scan_tag} {result['filename'][:40]} → {predicted} {indicator} "
+                    f"({result['type_confidence']:.2f}) | "
+                    f"{matched}/{total_attrs} attrs | "
+                    f"{result['processing_time_sec']:.1f}s"
+                )
+
+        results_path.write_text(json.dumps(results, ensure_ascii=False, indent=2))
+        print(f"\nResults saved → {results_path}")
+
+        metrics = compute_metrics(results)
+        print_metrics(metrics)
+        metrics_path.write_text(json.dumps(metrics, ensure_ascii=False, indent=2))
+        print(f"\nMetrics saved → {metrics_path}")
+        suggest_calibration(metrics, apply=args.apply_calibration)
+        print(f"\nExperiment complete. Results: {results_path} | Metrics: {metrics_path}")
+        return
+
+    # ------------------------------------------------------------------
+    # Load ground truth
+    # ------------------------------------------------------------------
     ground_truth: list[dict] = json.loads(GROUND_TRUTH_PATH.read_text())
     if args.limit:
         ground_truth = ground_truth[: args.limit]
 
-    print(f"Loaded {len(ground_truth)} documents from ground_truth.json")
+    track_label = "Track A — raw PDFs / fast-path (OCR bypassed)" if args.raw else "scanned PDFs / full OCR pipeline"
+    print(f"Loaded {len(ground_truth)} documents from ground_truth.json  [{track_label}]")
 
     if not args.no_servers:
         ensure_servers()
 
     # ------------------------------------------------------------------
+    # Output paths — separate files per track so runs don't overwrite each other
+    # ------------------------------------------------------------------
+    if args.raw:
+        results_path = EXPERIMENT_DIR / "results_raw.json"
+        metrics_path = EXPERIMENT_DIR / "metrics_raw.json"
+    else:
+        results_path = EXPERIMENT_DIR / "results.json"
+        metrics_path = EXPERIMENT_DIR / "metrics.json"
+
+    # ------------------------------------------------------------------
     # Processing loop
     # ------------------------------------------------------------------
     results: list[dict] = []
+    arrow = "→ (fast-path)" if args.raw else "→"
+
     with httpx.Client() as client:
         for entry in tqdm(ground_truth, desc="Processing", unit="doc", leave=True):
-            result = process_document(
-                client,
-                entry["filename"],
-                entry["document_type"],
-                entry["attributes"],
-            )
+            if args.raw:
+                result = process_document_raw(
+                    client,
+                    entry["filename"],
+                    entry["document_type"],
+                    entry["attributes"],
+                )
+            else:
+                result = process_document(
+                    client,
+                    entry["filename"],
+                    entry["document_type"],
+                    entry["attributes"],
+                )
             results.append(result)
             time.sleep(3)
 
@@ -544,7 +810,7 @@ def main() -> None:
             indicator = "✓" if result["type_correct"] else "✗"
             predicted = result["predicted_type"] or "ERROR"
             tqdm.write(
-                f"  {result['filename']} → {predicted} {indicator} "
+                f"  {result['filename']} {arrow} {predicted} {indicator} "
                 f"({result['type_confidence']:.2f}) | "
                 f"{matched}/{total_attrs} attrs | "
                 f"{result['processing_time_sec']:.1f}s"
@@ -553,7 +819,6 @@ def main() -> None:
     # ------------------------------------------------------------------
     # Save results
     # ------------------------------------------------------------------
-    results_path = EXPERIMENT_DIR / "results.json"
     results_path.write_text(json.dumps(results, ensure_ascii=False, indent=2))
     print(f"\nResults saved → {results_path}")
 
@@ -563,7 +828,6 @@ def main() -> None:
     metrics = compute_metrics(results)
     print_metrics(metrics)
 
-    metrics_path = EXPERIMENT_DIR / "metrics.json"
     metrics_path.write_text(json.dumps(metrics, ensure_ascii=False, indent=2))
     print(f"\nMetrics saved → {metrics_path}")
 
