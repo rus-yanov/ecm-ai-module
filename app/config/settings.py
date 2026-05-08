@@ -8,7 +8,10 @@ class Settings(BaseSettings):
     ollama_model: str = "qwen2.5:7b-instruct-q4_K_M"
     ollama_timeout_sec: int = 60
 
-    ocr_confidence_threshold: float = 0.6
+    # Mobile OCR model (eslav_PP-OCRv5_mobile_rec) produces avg_confidence
+    # 0.28-0.45 on Cyrillic text — threshold recalibrated accordingly.
+    # Production value with server model would be 0.6+.
+    ocr_confidence_threshold: float = 0.25
     default_review_threshold: float = 0.7
 
     max_file_size_mb: int = 20

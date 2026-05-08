@@ -119,9 +119,9 @@ def calibrate_scanner_params(real_docs_dir: Path) -> dict:
         return fallback
 
     return {
-        "noise_sigma": round(float(np.mean(noise_sigmas)), 2),
-        "jpeg_quality_min": int(np.mean(quality_mins)) if quality_mins else fallback["jpeg_quality_min"],
-        "jpeg_quality_max": int(np.mean(quality_maxes)) if quality_maxes else fallback["jpeg_quality_max"],
+        "noise_sigma": round(min(float(np.mean(noise_sigmas)), 2.5), 2),
+        "jpeg_quality_min": max(int(np.mean(quality_mins)) if quality_mins else fallback["jpeg_quality_min"], 78),
+        "jpeg_quality_max": max(int(np.mean(quality_maxes)) if quality_maxes else fallback["jpeg_quality_max"], 88),
     }
 
 
@@ -475,8 +475,8 @@ def apply_scanner_effect(
     """Render one PDF page and apply simulated scanner degradation."""
     doc = fitz.open(stream=pdf_bytes, filetype="pdf")
     page = doc[0]
-    pix = page.get_pixmap(matrix=fitz.Matrix(200/72, 200/72), colorspace=fitz.csRGB, alpha=True)
-    img = Image.frombytes("RGBA", (pix.width, pix.height), pix.samples).convert("RGB")
+    pix = page.get_pixmap(matrix=fitz.Matrix(200/72, 200/72), colorspace=fitz.csRGB, alpha=False)
+    img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
     doc.close()
 
     # 1. Slight random rotation (±1.5°)
