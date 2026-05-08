@@ -117,12 +117,12 @@ async def process_document(
         ecm = EcmAdapter()
         schema, contractors = await _gather_ecm(ecm, schema_id)
 
-        # --- 5. LLM classification + extraction (60 s hard timeout) ---
+        # --- 5. LLM classification + extraction (hard timeout = ollama_timeout_sec + 30 s) ---
         full_text = "\n".join(b.text for b in ocr_result.blocks) if ocr_result.blocks else filename
         try:
             doc_type, type_conf, raw_attrs = await asyncio.wait_for(
                 LlmService().classify_and_extract(full_text, schema, document_id=document_id),
-                timeout=60.0,
+                timeout=float(settings.ollama_timeout_sec) + 30.0,
             )
         except asyncio.TimeoutError:
             log.warning("llm_timeout")

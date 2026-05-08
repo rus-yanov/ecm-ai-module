@@ -103,6 +103,34 @@ def ensure_servers() -> None:
     else:
         print("main API already running on :8000")
 
+    _warm_up_llm()
+
+
+def _warm_up_llm() -> None:
+    """Send a minimal prompt to Ollama so the model is loaded before the experiment."""
+    import json as _json
+    try:
+        health = httpx.get(f"{API_BASE}/healthz", timeout=2.0).json()
+        model = health.get("model", "")
+    except Exception:
+        return
+
+    ollama_url = "http://localhost:11434/api/generate"
+    print(f"Warming up LLM ({model}) ...")
+    try:
+        resp = httpx.post(
+            ollama_url,
+            json={"model": model, "prompt": "1+1=", "stream": False},
+            timeout=120.0,
+        )
+        if resp.status_code == 200:
+            duration_ms = resp.json().get("total_duration", 0) // 1_000_000
+            print(f"  LLM warm  ({duration_ms} ms)")
+        else:
+            print(f"  LLM warm-up returned {resp.status_code}")
+    except Exception as exc:
+        print(f"  LLM warm-up skipped: {exc}")
+
 
 # ===========================================================================
 # Attribute comparison
@@ -194,7 +222,7 @@ def process_document_raw(
             f"{API_BASE}/api/v1/documents/process",
             files={"file": (txt_filename, text.encode("utf-8"), "text/plain")},
             data={"schema_id": schema_id},
-            timeout=90.0,
+            timeout=150.0,
         )
         elapsed = time.monotonic() - t0
         response.raise_for_status()
@@ -247,7 +275,7 @@ def process_real_document(
                 f"{API_BASE}/api/v1/documents/process",
                 files={"file": (txt_name, text.encode("utf-8"), "text/plain")},
                 data={"schema_id": schema_id},
-                timeout=90.0,
+                timeout=240.0,
             )
             elapsed = time.monotonic() - t0
         response.raise_for_status()

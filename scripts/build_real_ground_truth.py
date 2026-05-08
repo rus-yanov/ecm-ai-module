@@ -59,11 +59,10 @@ def _to_iso(date_str: str) -> str:
 # ---------------------------------------------------------------------------
 
 def _extract_act(text: str) -> dict:
-    head = text[:200]
-    tail = text
+    # Use pipeline field names: executor / executor_inn / receiver_name / total_cost_with_vat
 
     act_number = None
-    m = re.search(r'№\s*(\S+)', head)
+    m = re.search(r'№\s*(\S+)', text[:200])
     if m:
         act_number = m.group(1).strip(".,;")
 
@@ -72,138 +71,131 @@ def _extract_act(text: str) -> dict:
     if m:
         act_date = _to_iso(m.group(1))
 
-    contractor_name = None
-    for line in text.splitlines():
+    # executor / receiver_name may have value on the next line after the label;
+    # trim at first comma to exclude INN/KPP appended on the same line
+    lines = text.splitlines()
+    executor = None
+    for i, line in enumerate(lines):
         if "Исполнитель" in line and ":" in line:
             val = line.split(":", 1)[1].strip()
+            if not val and i + 1 < len(lines):
+                val = lines[i + 1].strip()
             if val:
-                contractor_name = val
+                executor = val.split(",")[0].strip()
                 break
 
-    contractor_inn = None
+    executor_inn = None
     m = re.search(r'ИНН[:\s]+(\d{10,12})', text)
     if m:
-        contractor_inn = m.group(1)
+        executor_inn = m.group(1)
 
-    client_name = None
-    for line in text.splitlines():
+    receiver_name = None
+    for i, line in enumerate(lines):
         if "Заказчик" in line and ":" in line:
             val = line.split(":", 1)[1].strip()
+            if not val and i + 1 < len(lines):
+                val = lines[i + 1].strip()
             if val:
-                client_name = val
+                receiver_name = val.split(",")[0].strip()
                 break
 
-    total_amount = None
-    matches = re.findall(r'([\d\s]+(?:[,.]\d+)?)\s*(?:руб|₽)', tail, re.IGNORECASE)
+    # total_cost_with_vat: handle "55 550,00\nруб" format (amount and unit on separate lines)
+    total_cost_with_vat = None
+    matches = re.findall(r'(\d[\d\s]*(?:[,.]\d+)?)\s*\n?\s*(?:руб|₽)', text, re.IGNORECASE)
     if matches:
         raw = matches[-1].strip().replace(" ", "").replace(",", ".")
         try:
-            total_amount = str(round(float(raw), 2))
+            total_cost_with_vat = str(round(float(raw), 2))
         except ValueError:
-            total_amount = raw
+            total_cost_with_vat = raw
 
     return {
-        "act_number":      act_number,
-        "act_date":        act_date,
-        "contractor_name": contractor_name,
-        "contractor_inn":  contractor_inn,
-        "client_name":     client_name,
-        "total_amount":    total_amount,
+        "act_number":        act_number,
+        "act_date":          act_date,
+        "executor":          executor,
+        "executor_inn":      executor_inn,
+        "receiver_name":     receiver_name,
+        "total_cost_with_vat": total_cost_with_vat,
     }
 
 
 def _extract_waybill(text: str) -> dict:
+    # document_number: use "ТРЕБОВАНИЕ-НАКЛАДНАЯ № N" pattern to skip the form-type header (М-11)
     document_number = None
-    m = re.search(r'№\s*(\S+)', text[:200])
+    m = re.search(r'ТРЕБОВАНИЕ-НАКЛАДНАЯ\s*№\s*(\S+)', text, re.IGNORECASE)
     if m:
         document_number = m.group(1).strip(".,;")
+    else:
+        # fallback: skip "Форма № …" lines, take second № occurrence
+        matches = list(re.finditer(r'№\s*(\S+)', text[:400]))
+        if len(matches) >= 2:
+            document_number = matches[1].group(1).strip(".,;")
+        elif matches:
+            document_number = matches[0].group(1).strip(".,;")
 
     document_date = None
     m = re.search(r'(\d{1,2}[.]\d{2}[.]\d{4})', text[:400])
     if m:
         document_date = _to_iso(m.group(1))
 
-    sender_department = None
-    for line in text.splitlines():
-        stripped = line.strip()
-        if not stripped:
-            continue
-        low = stripped.lower()
-        if any(kw in low for kw in ("отправитель", "сдатчик", "структурное подразделение-отправитель")):
-            if ":" in stripped:
-                val = stripped.split(":", 1)[1].strip()
-                if val:
-                    sender_department = val
-                    break
-            else:
-                sender_department = stripped
-                break
-
-    receiver_department = None
-    for line in text.splitlines():
-        stripped = line.strip()
-        if not stripped:
-            continue
-        low = stripped.lower()
-        if any(kw in low for kw in ("получатель", "структурное подразделение-получатель")):
-            if ":" in stripped:
-                val = stripped.split(":", 1)[1].strip()
-                if val:
-                    receiver_department = val
-                    break
-            else:
-                receiver_department = stripped
-                break
-
     return {
-        "document_number":     document_number,
-        "document_date":       document_date,
-        "sender_department":   sender_department,
-        "receiver_department": receiver_department,
+        "document_number": document_number,
+        "document_date":   document_date,
     }
 
 
 def _extract_order(text: str) -> dict:
-    head = text[:400]
+    # Use pipeline field names: order_number / order_date / title
 
+    # order_number: try "ПРИКАЗ № N" first; fall back to any № followed by a
+    # multi-char token (filters out bare list-item numbers like №1, №2 and п/п headers)
     order_number = None
-    m = re.search(r'ПРИКАЗ[^№]*№\s*(\S+)', text, re.IGNORECASE)
+    m = re.search(r'ПРИКАЗ\s*(?:№|N)\s*(\S+)', text, re.IGNORECASE)
     if m:
         order_number = m.group(1).strip(".,;")
     else:
-        m = re.search(r'№\s*(\S+)', head)
-        if m:
-            order_number = m.group(1).strip(".,;")
+        # Academic orders put number in footer; skip п/п, single-digit, and colon-only tokens
+        for m in re.finditer(r'(?:№|N)\s*(\S+)', text):
+            candidate = m.group(1).strip(".,;:")
+            if not candidate or candidate in ("п/п",):
+                continue
+            # Accept if multi-char and not just 1-2 digits (list item numbers)
+            if re.fullmatch(r'\d{1,2}', candidate):
+                continue
+            order_number = candidate
+            break
 
+    # order_date: search full text (some orders put the date in the footer)
     order_date = None
-    m = re.search(r'(\d{1,2}[.]\d{2}[.]\d{4})', head)
+    m = re.search(r'(\d{1,2}[.]\d{2}[.]\d{4})', text)
     if m:
         order_date = _to_iso(m.group(1))
 
-    organization_name = None
-    for line in text.splitlines():
-        stripped = line.strip()
-        if stripped:
-            organization_name = stripped
-            break
-
-    order_subject = None
-    m = re.search(r'\bОб?\s+(.+)', head)
+    # title: "О…" subject clause at the start of the document; collapse newlines
+    title = None
+    m = re.search(r'(?:^|\n)\s*(О[б]?\s+[^\n]{5,})', text[:600], re.IGNORECASE)
     if m:
-        order_subject = m.group(0).strip()
-    if not order_subject:
-        lines = [l.strip() for l in head.splitlines() if l.strip()]
-        for i, line in enumerate(lines):
-            low = line.lower()
-            if "приказ" in low and i + 1 < len(lines):
-                order_subject = lines[i + 1]
+        title = " ".join(m.group(1).split())
+    if not title:
+        hlines = [ln.strip() for ln in text[:400].splitlines() if ln.strip()]
+        for i, line in enumerate(hlines):
+            if "приказ" in line.lower() and i + 1 < len(hlines):
+                title = hlines[i + 1]
                 break
+    # Multi-line titles: join lines until we have a meaningful phrase; cap before ПРИКАЗЫВАЮ
+    if title and len(title) < 10:
+        more = re.search(r'О[б]?\s+(\S.{10,})', text[:600].replace('\n', ' '), re.IGNORECASE)
+        if more:
+            title = " ".join(more.group(0).split())
+    if title:
+        # Trim at ПРИКАЗЫВАЮ or first full stop to avoid including the body
+        title = re.split(r'\s*(?:ПРИКАЗЫВАЮ|\.(?:\s|$))', title, maxsplit=1)[0].strip()
+        title = title[:200]
 
     return {
-        "order_number":      order_number,
-        "order_date":        order_date,
-        "organization_name": organization_name,
-        "order_subject":     order_subject,
+        "order_number": order_number,
+        "order_date":   order_date,
+        "title":        title,
     }
 
 
@@ -235,6 +227,11 @@ def main() -> None:
         extractor = _EXTRACTORS[doc_type]
 
         for pdf_path in pdfs:
+            if doc_type == "ACT" and "RequirementOC" in pdf_path.name:
+                print(f"  [skip ОС-1к form] {pdf_path.name}")
+                total -= 1
+                continue
+
             text = _extract_text(pdf_path)
             if text is None:
                 print(f"  [scan/empty] {pdf_path.name}")

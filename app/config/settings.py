@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 
     ollama_base_url: str = "http://localhost:11434"
     ollama_model: str = "qwen2.5:7b-instruct-q4_K_M"
-    ollama_timeout_sec: int = 60
+    ollama_timeout_sec: int = 180
 
     # Mobile OCR model (eslav_PP-OCRv5_mobile_rec) produces avg_confidence
     # 0.28-0.45 on Cyrillic text — threshold recalibrated accordingly.

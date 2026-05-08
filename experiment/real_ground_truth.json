@@ -1,0 +1,195 @@
+[
+  {
+    "filename": "Obrazets-Akt-vypolnennyh-rabot-podryad.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/акт/Obrazets-Akt-vypolnennyh-rabot-podryad.pdf",
+    "document_type": "ACT",
+    "is_scan": false,
+    "attributes": {
+      "act_number": "15",
+      "act_date": "2026-02-12",
+      "executor": "Общество с ограниченной ответственностью \"А-Сервис\"",
+      "executor_inn": "7632014924",
+      "receiver_name": "Зудилин Андрей Васильевич ИП"
+    }
+  },
+  {
+    "filename": "Образец-Акта-сдачи-приемки-выполненных-работ-услуг.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/акт/Образец-Акта-сдачи-приемки-выполненных-работ-услуг.pdf",
+    "document_type": "ACT",
+    "is_scan": false,
+    "attributes": {
+      "act_date": "2022-01-18",
+      "executor_inn": "7705010473"
+    }
+  },
+  {
+    "filename": "Требование.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/требование-накладная/Требование.pdf",
+    "document_type": "WAYBILL",
+    "is_scan": false,
+    "attributes": {
+      "document_number": "77",
+      "document_date": "2025-03-28"
+    }
+  },
+  {
+    "filename": "Требование2.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/требование-накладная/Требование2.pdf",
+    "document_type": "WAYBILL",
+    "is_scan": false,
+    "attributes": {
+      "document_number": "109",
+      "document_date": "2025-03-03"
+    }
+  },
+  {
+    "filename": "Требование3.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/требование-накладная/Требование3.pdf",
+    "document_type": "WAYBILL",
+    "is_scan": false,
+    "attributes": {
+      "document_number": "570/374",
+      "document_date": "2025-03-17"
+    }
+  },
+  {
+    "filename": "Требование4.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/требование-накладная/Требование4.pdf",
+    "document_type": "WAYBILL",
+    "is_scan": false,
+    "attributes": {
+      "document_number": "1479",
+      "document_date": "2025-03-21"
+    }
+  },
+  {
+    "filename": "Требование5.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/требование-накладная/Требование5.pdf",
+    "document_type": "WAYBILL",
+    "is_scan": false,
+    "attributes": {
+      "document_number": "398з",
+      "document_date": "2025-03-13"
+    }
+  },
+  {
+    "filename": "29_06_17_Prikaz_2.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/29_06_17_Prikaz_2.pdf",
+    "document_type": "ORDER",
+    "is_scan": false,
+    "attributes": {
+      "order_number": "5-к",
+      "order_date": "2017-04-20",
+      "title": "Об оплате сверхурочной работы"
+    }
+  },
+  {
+    "filename": "Pr-394_19_06_2019_O_sozdanii_TSS_kollektiv_polzovaniya_TSKP_UNU_AS_USNIKP.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Pr-394_19_06_2019_O_sozdanii_TSS_kollektiv_polzovaniya_TSKP_UNU_AS_USNIKP.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Pr-histmsu_587-25-111-AC_17112025.pdf.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Pr-histmsu_587-25-111-AC_17112025.pdf.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Prikaz_ot_02.03.2020_268_reg._v_Minust_ot_21.08.2020 (1).pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Prikaz_ot_02.03.2020_268_reg._v_Minust_ot_21.08.2020 (1).pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ 1.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ 1.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ Минобрнауки России № 745.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ Минобрнауки России № 745.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ о завершении освоения образовательной программы_ЭБЦИ_2026.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ о завершении освоения образовательной программы_ЭБЦИ_2026.pdf",
+    "document_type": "ORDER",
+    "is_scan": false,
+    "attributes": {
+      "order_number": "2.10-02/200426-3",
+      "order_date": "2026-04-20",
+      "title": "О завершении освоения образовательной программы «Электронный бизнес и"
+    }
+  },
+  {
+    "filename": "Приказ о проведении ГИА студентов_ЭБЦИ_2026.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ о проведении ГИА студентов_ЭБЦИ_2026.pdf",
+    "document_type": "ORDER",
+    "is_scan": false,
+    "attributes": {
+      "order_number": "2.10-02/300426-5",
+      "order_date": "2026-06-02",
+      "title": "О проведении государственной итоговой аттестации студентов образовательной"
+    }
+  },
+  {
+    "filename": "Приказ о составе ГЭК по проведению ГИА студентов_ЭБЦИ_2026.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ о составе ГЭК по проведению ГИА студентов_ЭБЦИ_2026.pdf",
+    "document_type": "ORDER",
+    "is_scan": false,
+    "attributes": {
+      "order_date": "2026-04-28",
+      "title": "О составе государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса "
+    }
+  },
+  {
+    "filename": "Приказ № 01-01-013-05_25.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ № 01-01-013-05_25.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ № 01-01-014-05_25.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ № 01-01-014-05_25.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ № 01-01-032-19_26.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ № 01-01-032-19_26.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ № 01-01-033-19_26.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ № 01-01-033-19_26.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ № 01-01-142_01-48_25.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ № 01-01-142_01-48_25.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  },
+  {
+    "filename": "Приказ № 22-01-011-07_26.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/приказ/Приказ № 22-01-011-07_26.pdf",
+    "document_type": "ORDER",
+    "is_scan": true,
+    "attributes": {}
+  }
+]
