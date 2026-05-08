@@ -9,3 +9,5 @@ __pycache__/
 out/
 *.log
 .env
+corpus/raw/
+corpus/scanned/

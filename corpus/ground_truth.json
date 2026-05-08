@@ -1,0 +1,1322 @@
+[
+  {
+    "filename": "INVOICE_001.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "865",
+      "invoice_date": "2025-11-18",
+      "seller_name": "РАО «Михеев, Пестова и Соловьева»",
+      "seller_inn": "7776475938",
+      "buyer_name": "ИП «Матвеев Лукина»",
+      "buyer_inn": "7719489241",
+      "amount_with_vat": 779711.93,
+      "vat_amount": 129951.99
+    }
+  },
+  {
+    "filename": "INVOICE_002.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "138",
+      "invoice_date": "2023-10-02",
+      "seller_name": "ИП «Фролов»",
+      "seller_inn": "7777763170",
+      "buyer_name": "НПО «Журавлева, Хохлова и Наумова»",
+      "buyer_inn": "7707439150",
+      "amount_with_vat": 1144869.69,
+      "vat_amount": 190811.61
+    }
+  },
+  {
+    "filename": "INVOICE_003.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "979",
+      "invoice_date": "2026-03-20",
+      "seller_name": "РАО «Романов»",
+      "seller_inn": "7752449390",
+      "buyer_name": "Блинова Инкорпорэйтед",
+      "buyer_inn": "7766858784",
+      "amount_with_vat": 1728272.02,
+      "vat_amount": 288045.34
+    }
+  },
+  {
+    "filename": "INVOICE_004.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "244",
+      "invoice_date": "2024-01-23",
+      "seller_name": "Осипов и партнеры",
+      "seller_inn": "7797919074",
+      "buyer_name": "Абрамов Инкорпорэйтед",
+      "buyer_inn": "7778876232",
+      "amount_with_vat": 1191392.21,
+      "vat_amount": 198565.37
+    }
+  },
+  {
+    "filename": "INVOICE_005.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "242",
+      "invoice_date": "2024-01-21",
+      "seller_name": "ООО «Вишняков»",
+      "seller_inn": "7772110684",
+      "buyer_name": "АО «Голубева»",
+      "buyer_inn": "7785421430",
+      "amount_with_vat": 617047.69,
+      "vat_amount": 102841.28
+    }
+  },
+  {
+    "filename": "INVOICE_006.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "638",
+      "invoice_date": "2025-03-20",
+      "seller_name": "Мазда Соллерс Мануфэкчуринг Рус",
+      "seller_inn": "7780730215",
+      "buyer_name": "ОАО «Горшков, Мишин и Макарова»",
+      "buyer_inn": "7719303642",
+      "amount_with_vat": 522058.36,
+      "vat_amount": 87009.73
+    }
+  },
+  {
+    "filename": "INVOICE_007.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "813",
+      "invoice_date": "2025-09-23",
+      "seller_name": "НПО «Хохлова»",
+      "seller_inn": "7740029755",
+      "buyer_name": "ИП «Смирнова»",
+      "buyer_inn": "7736881398",
+      "amount_with_vat": 1154032.92,
+      "vat_amount": 192338.82
+    }
+  },
+  {
+    "filename": "INVOICE_008.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "332",
+      "invoice_date": "2024-04-26",
+      "seller_name": "НПО «Большакова Белов»",
+      "seller_inn": "7718159083",
+      "buyer_name": "РАО «Беспалов»",
+      "buyer_inn": "7761318609",
+      "amount_with_vat": 1896512.74,
+      "vat_amount": 316085.46
+    }
+  },
+  {
+    "filename": "INVOICE_009.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "233",
+      "invoice_date": "2024-01-11",
+      "seller_name": "АО «Блинов, Горбунова и Беляев»",
+      "seller_inn": "7712383607",
+      "buyer_name": "НПО «Гуляев, Попова и Романова»",
+      "buyer_inn": "7736173048",
+      "amount_with_vat": 750267.57,
+      "vat_amount": 125044.59
+    }
+  },
+  {
+    "filename": "INVOICE_010.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "475",
+      "invoice_date": "2024-09-26",
+      "seller_name": "ИП «Егоров-Давыдов»",
+      "seller_inn": "7705879158",
+      "buyer_name": "Родионова Инк",
+      "buyer_inn": "7762762230",
+      "amount_with_vat": 1232232.24,
+      "vat_amount": 205372.04
+    }
+  },
+  {
+    "filename": "INVOICE_011.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "586",
+      "invoice_date": "2025-01-23",
+      "seller_name": "НПО «Борисова, Новиков и Тихонов»",
+      "seller_inn": "7777420875",
+      "buyer_name": "АО «Гущина»",
+      "buyer_inn": "7750629566",
+      "amount_with_vat": 79681.35,
+      "vat_amount": 13280.23
+    }
+  },
+  {
+    "filename": "INVOICE_012.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "464",
+      "invoice_date": "2024-09-14",
+      "seller_name": "Зиновьева Групп",
+      "seller_inn": "7778932879",
+      "buyer_name": "РАО «Рожков Кошелев»",
+      "buyer_inn": "7721809679",
+      "amount_with_vat": 1733498.44,
+      "vat_amount": 288916.41
+    }
+  },
+  {
+    "filename": "INVOICE_013.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "486",
+      "invoice_date": "2024-10-09",
+      "seller_name": "Авторусь",
+      "seller_inn": "7752605747",
+      "buyer_name": "Снежная Королева",
+      "buyer_inn": "7738092752",
+      "amount_with_vat": 548954.98,
+      "vat_amount": 91492.5
+    }
+  },
+  {
+    "filename": "INVOICE_014.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "266",
+      "invoice_date": "2024-02-15",
+      "seller_name": "НПФ Газфонд пенсионные накопления",
+      "seller_inn": "7732322183",
+      "buyer_name": "Roust",
+      "buyer_inn": "7706290421",
+      "amount_with_vat": 592154.02,
+      "vat_amount": 98692.34
+    }
+  },
+  {
+    "filename": "INVOICE_015.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "110",
+      "invoice_date": "2023-09-02",
+      "seller_name": "ГК Титан",
+      "seller_inn": "7734441747",
+      "buyer_name": "Водоканал Санкт-Петербурга",
+      "buyer_inn": "7761435545",
+      "amount_with_vat": 1237518.98,
+      "vat_amount": 206253.16
+    }
+  },
+  {
+    "filename": "INVOICE_016.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "989",
+      "invoice_date": "2026-03-30",
+      "seller_name": "ЗАО «Горшкова»",
+      "seller_inn": "7702300253",
+      "buyer_name": "ИП «Тетерин»",
+      "buyer_inn": "7754645335",
+      "amount_with_vat": 429825.97,
+      "vat_amount": 71637.66
+    }
+  },
+  {
+    "filename": "INVOICE_017.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "371",
+      "invoice_date": "2024-06-07",
+      "seller_name": "ИП «Щукин, Панов и Рожков»",
+      "seller_inn": "7706433044",
+      "buyer_name": "ООО «Бобров-Гущина»",
+      "buyer_inn": "7794039402",
+      "amount_with_vat": 946406.8,
+      "vat_amount": 157734.47
+    }
+  },
+  {
+    "filename": "INVOICE_018.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "535",
+      "invoice_date": "2024-11-30",
+      "seller_name": "ИП «Савин-Шестаков»",
+      "seller_inn": "7784103664",
+      "buyer_name": "Исаева и партнеры",
+      "buyer_inn": "7762802328",
+      "amount_with_vat": 837123.45,
+      "vat_amount": 139520.57
+    }
+  },
+  {
+    "filename": "INVOICE_019.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "186",
+      "invoice_date": "2023-11-22",
+      "seller_name": "QIWI",
+      "seller_inn": "7753377274",
+      "buyer_name": "ИП «Карпов, Селезнев и Бирюкова»",
+      "buyer_inn": "7715823233",
+      "amount_with_vat": 258788.73,
+      "vat_amount": 43131.46
+    }
+  },
+  {
+    "filename": "INVOICE_020.pdf",
+    "document_type": "INVOICE",
+    "attributes": {
+      "invoice_number": "694",
+      "invoice_date": "2025-05-19",
+      "seller_name": "Журавлев Лтд",
+      "seller_inn": "7736584929",
+      "buyer_name": "РАО «Галкин-Бирюков»",
+      "buyer_inn": "7754154099",
+      "amount_with_vat": 100858.81,
+      "vat_amount": 16809.8
+    }
+  },
+  {
+    "filename": "ACT_001.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "150",
+      "act_date": "2023-10-14",
+      "contractor_name": "ОАО «Шестаков, Кудряшова и Устинов»",
+      "contractor_inn": "7756818117",
+      "client_name": "РАО «Александрова-Белозерова»",
+      "client_inn": "7735343223",
+      "services_description": "Техническое обслуживание сети передачи данных",
+      "total_amount": 927164.64
+    }
+  },
+  {
+    "filename": "ACT_002.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "596",
+      "act_date": "2025-02-02",
+      "contractor_name": "ЗАО «Уварова Терентьев»",
+      "contractor_inn": "7770839347",
+      "client_name": "Вольво Восток (AB Volvo)",
+      "client_inn": "7757143217",
+      "services_description": "Монтаж сети передачи данных",
+      "total_amount": 1696528.47
+    }
+  },
+  {
+    "filename": "ACT_003.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "152",
+      "act_date": "2023-10-17",
+      "contractor_name": "Терентьев Инкорпорэйтед",
+      "contractor_inn": "7789264969",
+      "client_name": "Беляев Лимитед",
+      "client_inn": "7788982673",
+      "services_description": "Монтаж оборудования",
+      "total_amount": 1357442.5
+    }
+  },
+  {
+    "filename": "ACT_004.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "732",
+      "act_date": "2026-04-15",
+      "contractor_name": "ООО «Аксенова, Горшкова и Прохорова»",
+      "contractor_inn": "7731916751",
+      "client_name": "РАО «Белоусов, Зуев и Пономарева»",
+      "client_inn": "7700312984",
+      "services_description": "Техническое обслуживание программного обеспечения",
+      "total_amount": 920752.08
+    }
+  },
+  {
+    "filename": "ACT_005.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "983",
+      "act_date": "2026-03-25",
+      "contractor_name": "ООО «Воронцова Панов»",
+      "contractor_inn": "7765020212",
+      "client_name": "РАО «Миронова»",
+      "client_inn": "7755039465",
+      "services_description": "Техническое обслуживание оборудования",
+      "total_amount": 53774.05
+    }
+  },
+  {
+    "filename": "ACT_006.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "900",
+      "act_date": "2025-12-25",
+      "contractor_name": "ЗАО «Елисеева-Рябов»",
+      "contractor_inn": "7704895425",
+      "client_name": "ОАО «Брагина Анисимов»",
+      "client_inn": "7716526967",
+      "services_description": "Разработка программного обеспечения",
+      "total_amount": 1188781.55
+    }
+  },
+  {
+    "filename": "ACT_007.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "728",
+      "act_date": "2025-06-24",
+      "contractor_name": "РАО «Кузьмина, Бурова и Воробьева»",
+      "contractor_inn": "7770413756",
+      "client_name": "ООО «Суханова, Воронцов и Маслова»",
+      "client_inn": "7737472245",
+      "services_description": "Пусконаладка программного обеспечения",
+      "total_amount": 1956739.44
+    }
+  },
+  {
+    "filename": "ACT_008.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "253",
+      "act_date": "2024-02-02",
+      "contractor_name": "Наумова Лимитед",
+      "contractor_inn": "7767426814",
+      "client_name": "ЗАО «Виноградов-Быкова»",
+      "client_inn": "7745329328",
+      "services_description": "Пусконаладка сети передачи данных",
+      "total_amount": 1245320.66
+    }
+  },
+  {
+    "filename": "ACT_009.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "134",
+      "act_date": "2023-09-28",
+      "contractor_name": "ООО «Мамонтов»",
+      "contractor_inn": "7746314323",
+      "client_name": "Билла (Rewe)",
+      "client_inn": "7731318618",
+      "services_description": "Разработка сети передачи данных",
+      "total_amount": 1434881.68
+    }
+  },
+  {
+    "filename": "ACT_010.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "287",
+      "act_date": "2024-03-09",
+      "contractor_name": "НПО «Ковалева, Андреев и Медведев»",
+      "contractor_inn": "7738749813",
+      "client_name": "ЗАО «Хохлов, Гордеев и Филатова»",
+      "client_inn": "7724885182",
+      "services_description": "Пусконаладка программного обеспечения",
+      "total_amount": 469596.51
+    }
+  },
+  {
+    "filename": "ACT_011.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "957",
+      "act_date": "2026-02-24",
+      "contractor_name": "ОАО «Харитонова, Цветкова и Горшков»",
+      "contractor_inn": "7767481868",
+      "client_name": "ООО «Федоров-Жуков»",
+      "client_inn": "7781270869",
+      "services_description": "Техническое обслуживание сети передачи данных",
+      "total_amount": 1982031.74
+    }
+  },
+  {
+    "filename": "ACT_012.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "848",
+      "act_date": "2025-10-30",
+      "contractor_name": "ИП «Кузнецова Колесников»",
+      "contractor_inn": "7766923683",
+      "client_name": "ООО «Гущин Щукин»",
+      "client_inn": "7764635705",
+      "services_description": "Монтаж сети передачи данных",
+      "total_amount": 1898211.07
+    }
+  },
+  {
+    "filename": "ACT_013.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "493",
+      "act_date": "2024-10-16",
+      "contractor_name": "Европа",
+      "contractor_inn": "7794762538",
+      "client_name": "РАО «Гуляев, Соболева и Селиверстова»",
+      "client_inn": "7737745339",
+      "services_description": "Монтаж сети передачи данных",
+      "total_amount": 1668439.19
+    }
+  },
+  {
+    "filename": "ACT_014.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "32",
+      "act_date": "2023-06-10",
+      "contractor_name": "ВкусВилл",
+      "contractor_inn": "7707853601",
+      "client_name": "АО «Полякова-Кириллов»",
+      "client_inn": "7774465637",
+      "services_description": "Монтаж программного обеспечения",
+      "total_amount": 1312915.85
+    }
+  },
+  {
+    "filename": "ACT_015.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "247",
+      "act_date": "2024-01-27",
+      "contractor_name": "ИП «Казакова»",
+      "contractor_inn": "7739028884",
+      "client_name": "Гусев Лтд",
+      "client_inn": "7755117619",
+      "services_description": "Монтаж оборудования",
+      "total_amount": 1131996.97
+    }
+  },
+  {
+    "filename": "ACT_016.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "918",
+      "act_date": "2026-01-13",
+      "contractor_name": "ОАО «Данилов Комарова»",
+      "contractor_inn": "7715844570",
+      "client_name": "Гусева Инкорпорэйтед",
+      "client_inn": "7720427932",
+      "services_description": "Разработка программного обеспечения",
+      "total_amount": 577242.82
+    }
+  },
+  {
+    "filename": "ACT_017.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "842",
+      "act_date": "2025-10-24",
+      "contractor_name": "Андреева Лимитед",
+      "contractor_inn": "7740127734",
+      "client_name": "ЗАО «Сазонов, Симонова и Белозерова»",
+      "client_inn": "7791715857",
+      "services_description": "Монтаж программного обеспечения",
+      "total_amount": 1494837.83
+    }
+  },
+  {
+    "filename": "ACT_018.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "246",
+      "act_date": "2024-01-26",
+      "contractor_name": "АО «Лаврентьев Рогова»",
+      "contractor_inn": "7728618955",
+      "client_name": "ОАО «Миронова, Голубев и Сидоров»",
+      "client_inn": "7756126666",
+      "services_description": "Техническое обслуживание сети передачи данных",
+      "total_amount": 375096.09
+    }
+  },
+  {
+    "filename": "ACT_019.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "729",
+      "act_date": "2025-06-25",
+      "contractor_name": "ИП «Лазарев Котова»",
+      "contractor_inn": "7754045097",
+      "client_name": "Кондратьева Лтд",
+      "client_inn": "7759829803",
+      "services_description": "Монтаж программного обеспечения",
+      "total_amount": 1269331.18
+    }
+  },
+  {
+    "filename": "ACT_020.pdf",
+    "document_type": "ACT",
+    "attributes": {
+      "act_number": "949",
+      "act_date": "2026-02-16",
+      "contractor_name": "ООО «Капустина Доронина»",
+      "contractor_inn": "7788611632",
+      "client_name": "ОАО «Наумов-Гаврилов»",
+      "client_inn": "7779064605",
+      "services_description": "Пусконаладка программного обеспечения",
+      "total_amount": 582703.85
+    }
+  },
+  {
+    "filename": "ORDER_001.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "47",
+      "order_date": "2023-06-26",
+      "organization_name": "ООО «Зуева Семенов» (ООО)",
+      "order_subject": "назначении ответственных лиц",
+      "signatory_name": "Дмитриев Я.Ф.",
+      "signatory_position": "Генеральный директор"
+    }
+  },
+  {
+    "filename": "ORDER_002.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "69",
+      "order_date": "2023-07-20",
+      "organization_name": "НПО «Иванов-Логинова» (ООО)",
+      "order_subject": "утверждении графика отпусков",
+      "signatory_name": "Воронцов М.Р.",
+      "signatory_position": "Руководитель"
+    }
+  },
+  {
+    "filename": "ORDER_003.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "783",
+      "order_date": "2025-08-22",
+      "organization_name": "Силовые машины (ООО)",
+      "order_subject": "организации документооборота",
+      "signatory_name": "Зыков Е.Г.",
+      "signatory_position": "Руководитель"
+    }
+  },
+  {
+    "filename": "ORDER_004.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "93",
+      "order_date": "2023-08-15",
+      "organization_name": "ЗАО «Беспалова, Родионов и Павлов» (ООО)",
+      "order_subject": "проведении инвентаризации",
+      "signatory_name": "Логинова Ч.Ю.",
+      "signatory_position": "Руководитель"
+    }
+  },
+  {
+    "filename": "ORDER_005.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "407",
+      "order_date": "2024-07-16",
+      "organization_name": "ЗАО «Гаврилов» (ООО)",
+      "order_subject": "проведении инвентаризации",
+      "signatory_name": "Белоусов О.Х.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_006.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "445",
+      "order_date": "2024-08-26",
+      "organization_name": "Русснефть (ООО)",
+      "order_subject": "организации документооборота",
+      "signatory_name": "Белова С.Ф.",
+      "signatory_position": "Генеральный директор"
+    }
+  },
+  {
+    "filename": "ORDER_007.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "9",
+      "order_date": "2023-05-17",
+      "organization_name": "ООО «Третьяков-Рогова» (ООО)",
+      "order_subject": "проведении инвентаризации",
+      "signatory_name": "Сидоров Е.Д.",
+      "signatory_position": "Исполнительный директор"
+    }
+  },
+  {
+    "filename": "ORDER_008.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "519",
+      "order_date": "2024-11-12",
+      "organization_name": "General Fueller (ООО)",
+      "order_subject": "внесении изменений в штатное расписание",
+      "signatory_name": "Артемьева Е.П.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_009.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "286",
+      "order_date": "2024-03-08",
+      "organization_name": "РАО «Романова Орехова» (ООО)",
+      "order_subject": "внесении изменений в штатное расписание",
+      "signatory_name": "Алексеева И.Б.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_010.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "571",
+      "order_date": "2025-01-07",
+      "organization_name": "АО «Пестова» (ООО)",
+      "order_subject": "проведении инвентаризации",
+      "signatory_name": "Захарова К.Б.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_011.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "394",
+      "order_date": "2024-07-02",
+      "organization_name": "Приосколье (ООО)",
+      "order_subject": "проведении инвентаризации",
+      "signatory_name": "Белозерова Д.Л.",
+      "signatory_position": "Руководитель"
+    }
+  },
+  {
+    "filename": "ORDER_012.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "579",
+      "order_date": "2025-01-16",
+      "organization_name": "Татэнергосбыт (ООО)",
+      "order_subject": "утверждении графика отпусков",
+      "signatory_name": "Волков Л.Д.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_013.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "406",
+      "order_date": "2024-07-15",
+      "organization_name": "ООО «Пономарева» (ООО)",
+      "order_subject": "внесении изменений в штатное расписание",
+      "signatory_name": "Ковалев Л.А.",
+      "signatory_position": "Генеральный директор"
+    }
+  },
+  {
+    "filename": "ORDER_014.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "156",
+      "order_date": "2023-10-21",
+      "organization_name": "ИП «Волков Мельников» (ООО)",
+      "order_subject": "организации документооборота",
+      "signatory_name": "Щукин Т.Я.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_015.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "530",
+      "order_date": "2024-11-24",
+      "organization_name": "НПО «Моисеев-Тимофеева» (ООО)",
+      "order_subject": "утверждении графика отпусков",
+      "signatory_name": "Орлова Ф.Ф.",
+      "signatory_position": "Руководитель"
+    }
+  },
+  {
+    "filename": "ORDER_016.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "46",
+      "order_date": "2023-06-25",
+      "organization_name": "РАО «Кононова-Дроздов» (ООО)",
+      "order_subject": "утверждении графика отпусков",
+      "signatory_name": "Мухин Б.К.",
+      "signatory_position": "Генеральный директор"
+    }
+  },
+  {
+    "filename": "ORDER_017.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "880",
+      "order_date": "2025-12-04",
+      "organization_name": "Кубанская нефтегазовая компания (ООО)",
+      "order_subject": "назначении ответственных лиц",
+      "signatory_name": "Быкова С.Х.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_018.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "984",
+      "order_date": "2026-03-25",
+      "organization_name": "АО «Овчинников Аксенова» (ООО)",
+      "order_subject": "утверждении графика отпусков",
+      "signatory_name": "Чернов В.И.",
+      "signatory_position": "Директор"
+    }
+  },
+  {
+    "filename": "ORDER_019.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "308",
+      "order_date": "2024-04-01",
+      "organization_name": "ОАО «Русакова» (ООО)",
+      "order_subject": "назначении ответственных лиц",
+      "signatory_name": "Цветкова М.И.",
+      "signatory_position": "Генеральный директор"
+    }
+  },
+  {
+    "filename": "ORDER_020.pdf",
+    "document_type": "ORDER",
+    "attributes": {
+      "order_number": "715",
+      "order_date": "2025-06-11",
+      "organization_name": "ЗАО «Федоров-Прохоров» (ООО)",
+      "order_subject": "утверждении графика отпусков",
+      "signatory_name": "Савельева Н.Б.",
+      "signatory_position": "Генеральный директор"
+    }
+  },
+  {
+    "filename": "WAYBILL_001.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "613",
+      "document_date": "2025-02-21",
+      "sender_department": "Отдел снабжения",
+      "receiver_department": "Отдел снабжения",
+      "operation_type_code": "5075869",
+      "items_description": "Синтез, Использование, Переопределение"
+    }
+  },
+  {
+    "filename": "WAYBILL_002.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "409",
+      "document_date": "2024-07-18",
+      "sender_department": "Производственный участок № 4",
+      "receiver_department": "Цех № 5",
+      "operation_type_code": "7873941",
+      "items_description": "Мотивация, Интеграция, Реализация, Включение"
+    }
+  },
+  {
+    "filename": "WAYBILL_003.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "989",
+      "document_date": "2026-03-30",
+      "sender_department": "Производственный участок № 4",
+      "receiver_department": "Цех № 1",
+      "operation_type_code": "8867306",
+      "items_description": "Перепрофилирование, Перепрофилирование, Управление, Визуализация"
+    }
+  },
+  {
+    "filename": "WAYBILL_004.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "33",
+      "document_date": "2023-06-11",
+      "sender_department": "Цех № 2",
+      "receiver_department": "Склад № 5",
+      "operation_type_code": "3199498",
+      "items_description": "Перепрофилирование, Производство, Инновация, Распределение, Синхронизация"
+    }
+  },
+  {
+    "filename": "WAYBILL_005.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "138",
+      "document_date": "2023-10-01",
+      "sender_department": "Цех № 4",
+      "receiver_department": "Производственный участок № 1",
+      "operation_type_code": "6870343",
+      "items_description": "Синтез, Внедрение, Обеспечение"
+    }
+  },
+  {
+    "filename": "WAYBILL_006.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "187",
+      "document_date": "2023-11-24",
+      "sender_department": "Производственный участок № 3",
+      "receiver_department": "Цех № 5",
+      "operation_type_code": "9648292",
+      "items_description": "Культивация, Освоение, Формирование"
+    }
+  },
+  {
+    "filename": "WAYBILL_007.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "441",
+      "document_date": "2024-08-21",
+      "sender_department": "Цех № 3",
+      "receiver_department": "Цех № 4",
+      "operation_type_code": "8349366",
+      "items_description": "Ускорение, Включение, Перезагрузка, Увеличение, Управление"
+    }
+  },
+  {
+    "filename": "WAYBILL_008.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "654",
+      "document_date": "2025-04-05",
+      "sender_department": "Отдел снабжения",
+      "receiver_department": "Отдел снабжения",
+      "operation_type_code": "4487640",
+      "items_description": "Ускорение, Синтез, Модернизация, Освоение, Шкалирование"
+    }
+  },
+  {
+    "filename": "WAYBILL_009.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "192",
+      "document_date": "2023-11-29",
+      "sender_department": "Цех № 4",
+      "receiver_department": "Отдел снабжения",
+      "operation_type_code": "6558426",
+      "items_description": "Освоение, Революция, Культивация, Инновация"
+    }
+  },
+  {
+    "filename": "WAYBILL_010.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "65",
+      "document_date": "2023-07-16",
+      "sender_department": "Отдел снабжения",
+      "receiver_department": "Склад № 3",
+      "operation_type_code": "0233337",
+      "items_description": "Внедрение, Переход, Монетизация"
+    }
+  },
+  {
+    "filename": "WAYBILL_011.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "565",
+      "document_date": "2024-12-31",
+      "sender_department": "Склад № 4",
+      "receiver_department": "Отдел снабжения",
+      "operation_type_code": "3424985",
+      "items_description": "Охват, Максимизация, Освоение"
+    }
+  },
+  {
+    "filename": "WAYBILL_012.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "841",
+      "document_date": "2025-10-23",
+      "sender_department": "Отдел снабжения",
+      "receiver_department": "Отдел снабжения",
+      "operation_type_code": "4167248",
+      "items_description": "Включение, Монетизация, Освоение, Сравнение, Генерация"
+    }
+  },
+  {
+    "filename": "WAYBILL_013.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "666",
+      "document_date": "2025-04-19",
+      "sender_department": "Цех № 4",
+      "receiver_department": "Склад № 3",
+      "operation_type_code": "6025337",
+      "items_description": "Ускорение, Использование, Конструирование, Объединение"
+    }
+  },
+  {
+    "filename": "WAYBILL_014.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "579",
+      "document_date": "2025-01-15",
+      "sender_department": "Цех № 4",
+      "receiver_department": "Производственный участок № 1",
+      "operation_type_code": "6703205",
+      "items_description": "Оцифровка, Приспособление, Синтез"
+    }
+  },
+  {
+    "filename": "WAYBILL_015.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "202",
+      "document_date": "2023-12-09",
+      "sender_department": "Производственный участок № 1",
+      "receiver_department": "Цех № 1",
+      "operation_type_code": "1204363",
+      "items_description": "Перепрофилирование, Внедрение, Итерация, Визуализация, Обеспечение"
+    }
+  },
+  {
+    "filename": "WAYBILL_016.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "420",
+      "document_date": "2024-07-30",
+      "sender_department": "Производственный участок № 3",
+      "receiver_department": "Склад № 6",
+      "operation_type_code": "6505901",
+      "items_description": "Конструирование, Конструирование, Интеграция, Инновация, Модернизация"
+    }
+  },
+  {
+    "filename": "WAYBILL_017.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "28",
+      "document_date": "2023-06-05",
+      "sender_department": "Склад № 6",
+      "receiver_department": "Склад № 4",
+      "operation_type_code": "0503370",
+      "items_description": "Продление, Производство, Монетизация"
+    }
+  },
+  {
+    "filename": "WAYBILL_018.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "474",
+      "document_date": "2024-09-25",
+      "sender_department": "Склад № 7",
+      "receiver_department": "Склад № 4",
+      "operation_type_code": "6033877",
+      "items_description": "Приспособление, Оцифровка, Переход"
+    }
+  },
+  {
+    "filename": "WAYBILL_019.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "716",
+      "document_date": "2025-06-11",
+      "sender_department": "Склад № 8",
+      "receiver_department": "Производственный участок № 4",
+      "operation_type_code": "0766294",
+      "items_description": "Переход, Перезагрузка, Переход"
+    }
+  },
+  {
+    "filename": "WAYBILL_020.pdf",
+    "document_type": "WAYBILL",
+    "attributes": {
+      "document_number": "183",
+      "document_date": "2023-11-19",
+      "sender_department": "Склад № 9",
+      "receiver_department": "Производственный участок № 1",
+      "operation_type_code": "0899691",
+      "items_description": "Модернизация, Использование, Синтез"
+    }
+  },
+  {
+    "filename": "PAYMENT_001.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "316",
+      "document_date": "2024-04-09",
+      "payer_name": "ОАО «Кулагина-Герасимов»",
+      "payer_inn": "7797766844",
+      "receiver_name": "АО «Коновалова, Никонова и Самойлов»",
+      "receiver_inn": "7720390649",
+      "amount": 1130373.72,
+      "payment_purpose": "Оплата по договору № 145 от 21.10.2024 за услуги без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_002.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "510",
+      "document_date": "2024-11-03",
+      "payer_name": "ОАО «Агафонова, Шилов и Костина»",
+      "payer_inn": "7796752472",
+      "receiver_name": "ООО «Давыдова»",
+      "receiver_inn": "7714180714",
+      "amount": 216137.49,
+      "payment_purpose": "Оплата по договору № 147 от 13.05.2024 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_003.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "842",
+      "document_date": "2025-10-24",
+      "payer_name": "ООО «Тимофеева»",
+      "payer_inn": "7766487696",
+      "receiver_name": "Совкомфлот",
+      "receiver_inn": "7707972247",
+      "amount": 986972.81,
+      "payment_purpose": "Оплата по договору № 165 от 16.07.2024 за выполненные работы без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_004.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "256",
+      "document_date": "2024-02-05",
+      "payer_name": "РАО «Капустина-Марков»",
+      "payer_inn": "7747288656",
+      "receiver_name": "ООО «Ларионова Селиверстова»",
+      "receiver_inn": "7714222723",
+      "amount": 1253838.31,
+      "payment_purpose": "Оплата по договору № 42 от 10.11.2025 за услуги без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_005.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "90",
+      "document_date": "2023-08-11",
+      "payer_name": "РАО «Семенова, Герасимов и Колесникова»",
+      "payer_inn": "7791526107",
+      "receiver_name": "ЗАО «Попов»",
+      "receiver_inn": "7729232824",
+      "amount": 1863919.24,
+      "payment_purpose": "Оплата по договору № 133 от 01.03.2025 за услуги без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_006.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "45",
+      "document_date": "2023-06-24",
+      "payer_name": "Каменск-Уральский металлургический завод",
+      "payer_inn": "7719981694",
+      "receiver_name": "ЗАО «Власов Соловьева»",
+      "receiver_inn": "7750687854",
+      "amount": 381383.37,
+      "payment_purpose": "Оплата по договору № 185 от 04.12.2024 за выполненные работы без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_007.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "432",
+      "document_date": "2024-08-11",
+      "payer_name": "ОАО «Вишняков, Захарова и Елисеев»",
+      "payer_inn": "7712012411",
+      "receiver_name": "АО «Крылова, Устинов и Шарапов»",
+      "receiver_inn": "7712230177",
+      "amount": 1858013.52,
+      "payment_purpose": "Оплата по договору № 148 от 13.05.2025 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_008.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "675",
+      "document_date": "2025-04-28",
+      "payer_name": "ОАО «Нестерова»",
+      "payer_inn": "7748659788",
+      "receiver_name": "РАО «Комиссаров, Борисова и Князев»",
+      "receiver_inn": "7708173736",
+      "amount": 1650198.81,
+      "payment_purpose": "Оплата по договору № 139 от 20.06.2024 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_009.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "818",
+      "document_date": "2025-09-28",
+      "payer_name": "ИП «Бурова, Кудрявцева и Мухин»",
+      "payer_inn": "7799168418",
+      "receiver_name": "ЗАО «Ильина, Медведева и Маркова»",
+      "receiver_inn": "7714429203",
+      "amount": 1433954.32,
+      "payment_purpose": "Оплата по договору № 143 от 13.09.2024 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_010.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "846",
+      "document_date": "2025-10-29",
+      "payer_name": "Кондратьев Инкорпорэйтед",
+      "payer_inn": "7786163818",
+      "receiver_name": "АО «Зуев, Назаров и Анисимов»",
+      "receiver_inn": "7789228702",
+      "amount": 1040476.91,
+      "payment_purpose": "Оплата по договору № 39 от 07.11.2025 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_011.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "151",
+      "document_date": "2023-10-16",
+      "payer_name": "РАО «Афанасьева-Прохоров»",
+      "payer_inn": "7714733227",
+      "receiver_name": "ИП «Брагина»",
+      "receiver_inn": "7736718287",
+      "amount": 1375767.69,
+      "payment_purpose": "Оплата по договору № 5 от 05.10.2025 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_012.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "222",
+      "document_date": "2023-12-31",
+      "payer_name": "АО «Жукова-Карпов»",
+      "payer_inn": "7737630881",
+      "receiver_name": "Военторг",
+      "receiver_inn": "7715984590",
+      "amount": 66669.67,
+      "payment_purpose": "Оплата по договору № 155 от 10.06.2024 за услуги без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_013.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "295",
+      "document_date": "2024-03-18",
+      "payer_name": "Леруа Мерлен Восток (Leroi Merlin)",
+      "payer_inn": "7713143937",
+      "receiver_name": "РАО «Баранов, Цветкова и Гаврилова»",
+      "receiver_inn": "7725844448",
+      "amount": 1731304.7,
+      "payment_purpose": "Оплата по договору № 28 от 23.02.2025 за услуги без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_014.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "841",
+      "document_date": "2025-10-23",
+      "payer_name": "РКЦ Прогресс",
+      "payer_inn": "7721842824",
+      "receiver_name": "ИП «Соболев, Тарасова и Тетерин»",
+      "receiver_inn": "7744591734",
+      "amount": 1505495.08,
+      "payment_purpose": "Оплата по договору № 47 от 29.09.2025 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_015.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "433",
+      "document_date": "2024-08-12",
+      "payer_name": "ОАО «Бурова-Журавлева»",
+      "payer_inn": "7739441482",
+      "receiver_name": "Комос Групп",
+      "receiver_inn": "7762472094",
+      "amount": 1696549.88,
+      "payment_purpose": "Оплата по договору № 191 от 29.05.2024 за выполненные работы без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_016.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "794",
+      "document_date": "2025-09-03",
+      "payer_name": "ОАО «Наумов Колесников»",
+      "payer_inn": "7738218072",
+      "receiver_name": "РАО «Савина Рыбакова»",
+      "receiver_inn": "7704212416",
+      "amount": 688333.9,
+      "payment_purpose": "Оплата по договору № 50 от 04.02.2026 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_017.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "260",
+      "document_date": "2024-02-09",
+      "payer_name": "ЗАО «Королева»",
+      "payer_inn": "7799485790",
+      "receiver_name": "Харитонов Лимитед",
+      "receiver_inn": "7703787369",
+      "amount": 1678160.03,
+      "payment_purpose": "Оплата по договору № 149 от 03.03.2026 за выполненные работы без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_018.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "954",
+      "document_date": "2026-02-21",
+      "payer_name": "Арктикгаз",
+      "payer_inn": "7706405070",
+      "receiver_name": "РАО «Семенов, Калашников и Мамонтов»",
+      "receiver_inn": "7704154056",
+      "amount": 1201043.89,
+      "payment_purpose": "Оплата по договору № 21 от 27.02.2026 за выполненные работы без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_019.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "331",
+      "document_date": "2024-04-25",
+      "payer_name": "ИП «Бобров»",
+      "payer_inn": "7748340265",
+      "receiver_name": "ЗАО «Гаврилов-Костин»",
+      "receiver_inn": "7746810419",
+      "amount": 718549.45,
+      "payment_purpose": "Оплата по договору № 37 от 15.02.2026 за поставку товаров без НДС"
+    }
+  },
+  {
+    "filename": "PAYMENT_020.pdf",
+    "document_type": "PAYMENT",
+    "attributes": {
+      "document_number": "640",
+      "document_date": "2025-03-22",
+      "payer_name": "Нестле Россия (Nestle)",
+      "payer_inn": "7724581082",
+      "receiver_name": "НПО «Лукин»",
+      "receiver_inn": "7700517496",
+      "amount": 1369881.93,
+      "payment_purpose": "Оплата по договору № 34 от 05.05.2025 за услуги без НДС"
+    }
+  }
+]
