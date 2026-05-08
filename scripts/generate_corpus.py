@@ -52,7 +52,7 @@ def calibrate_scanner_params(real_docs_dir: Path) -> dict:
     Returns:
         dict with keys: noise_sigma, jpeg_quality_min, jpeg_quality_max
     """
-    fallback = {"noise_sigma": 4.0, "jpeg_quality_min": 72, "jpeg_quality_max": 88}
+    fallback = {"noise_sigma": 2.0, "jpeg_quality_min": 80, "jpeg_quality_max": 92}
 
     if not real_docs_dir.exists():
         print("  [calibrate] Real docs directory not found — using fallback params")
@@ -475,7 +475,7 @@ def apply_scanner_effect(
     """Render one PDF page and apply simulated scanner degradation."""
     doc = fitz.open(stream=pdf_bytes, filetype="pdf")
     page = doc[0]
-    pix = page.get_pixmap(matrix=fitz.Matrix(2, 2), colorspace=fitz.csRGB, alpha=True)
+    pix = page.get_pixmap(matrix=fitz.Matrix(200/72, 200/72), colorspace=fitz.csRGB, alpha=True)
     img = Image.frombytes("RGBA", (pix.width, pix.height), pix.samples).convert("RGB")
     doc.close()
 
