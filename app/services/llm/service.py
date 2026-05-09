@@ -265,6 +265,8 @@ class LlmService:
     ) -> tuple[DocumentType, float, list[ExtractedAttribute]]:
         log = logger.bind(document_id=document_id) if document_id else logger
 
+        original_text = text  # сохраняем до любой очистки — нужен для постпроцессинга
+
         # 1. Убираем PDF-артефакты (строки из номеров колонок таблиц)
         text = re.sub(r'(?m)^\s*\d{1,2}[аб]?\s*$', '', text)
         text = re.sub(r'\n{3,}', '\n\n', text)
@@ -318,6 +320,35 @@ class LlmService:
             return _FALLBACK
 
         doc_type, type_confidence, attributes = self._parse_response(raw_json)
+
+        # Post-processing: для WAYBILL берём первую дату из оригинального текста.
+        # Форма М-11: «Дата составления» всегда первая DD.MM.YYYY (~поз. 272),
+        # последующие даты — даты позиций/операций.
+        if doc_type == DocumentType.WAYBILL:
+            doc_date_attr = next((a for a in attributes if a.name == "document_date"), None)
+            if doc_date_attr is None or doc_date_attr.confidence < 0.9:
+                first_date_match = re.search(r'\b(\d{2}\.\d{2}\.\d{4})\b', original_text)
+                if first_date_match:
+                    normalized = _normalize_date_value(first_date_match.group(1))
+                    if doc_date_attr:
+                        attributes = [
+                            ExtractedAttribute(
+                                name=a.name,
+                                raw_value=normalized if a.name == "document_date" else a.raw_value,
+                                normalized_value=normalized if a.name == "document_date" else a.normalized_value,
+                                confidence=0.85 if a.name == "document_date" else a.confidence,
+                                requires_verification=False,
+                            )
+                            for a in attributes
+                        ]
+                    else:
+                        attributes.append(ExtractedAttribute(
+                            name="document_date",
+                            raw_value=normalized,
+                            normalized_value=normalized,
+                            confidence=0.85,
+                            requires_verification=False,
+                        ))
 
         log.info(
             "LLM classify_and_extract",
