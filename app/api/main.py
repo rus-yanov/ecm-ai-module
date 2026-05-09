@@ -25,6 +25,17 @@ logging.basicConfig(level=settings.log_level)
 logger = structlog.get_logger(__name__)
 
 
+_ocr_service = None  # singleton, initialised on first scan request
+
+
+def _get_ocr_service():
+    global _ocr_service
+    if _ocr_service is None:
+        from app.services.ocr.service import OcrService
+        _ocr_service = OcrService()
+    return _ocr_service
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     logger.info("ECM AI Module starting", model=settings.ollama_model)
@@ -81,11 +92,11 @@ async def process_document(
 
         filename = file.filename or "document"
 
-        # --- 2. OCR (30 s hard timeout) ---
+        # --- 2. OCR (120 s hard timeout; model loads on first call ~15 s + OCR ~20 s/page) ---
         try:
             ocr_result: OcrResult = await asyncio.wait_for(
-                OcrService().recognize(file_bytes, filename, document_id=document_id),
-                timeout=30.0,
+                _get_ocr_service().recognize(file_bytes, filename, document_id=document_id),
+                timeout=120.0,
             )
         except asyncio.TimeoutError:
             log.warning("ocr_timeout")

@@ -261,7 +261,7 @@ def process_real_document(
                 f"{API_BASE}/api/v1/documents/process",
                 files={"file": (filename, data_bytes, "application/pdf")},
                 data={"schema_id": schema_id},
-                timeout=120.0,
+                timeout=300.0,
             )
             elapsed = time.monotonic() - t0
         else:
