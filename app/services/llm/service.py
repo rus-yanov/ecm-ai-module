@@ -222,13 +222,16 @@ class LlmService:
         text = re.sub(r'\n{3,}', '\n\n', text)
 
         # 2. Для счётов-фактур: оставляем только шапку документа (до первой большой таблицы).
-        #    Таблица с колонками ПП-1137 начинается после "Итого" / "к оплате".
-        _invoice_header_stop = re.search(
-            r'(?im)^\s*(итого|к\s+оплате|наименование\s+товара)',
-            text
-        )
-        if _invoice_header_stop and _invoice_header_stop.start() > 200:
-            text = text[:_invoice_header_stop.start() + 200]
+        #    Применяем ТОЛЬКО если документ явно начинается с «Счёт-фактура».
+        #    \b в паттерне защищает от «итоговой», «итогового» и т.п.
+        _text_start = text[:400].lower()
+        if 'счёт-фактура' in _text_start or 'счет-фактура' in _text_start:
+            _invoice_header_stop = re.search(
+                r'(?im)^\s*(итого\b|к\s+оплате|наименование\s+товара)',
+                text
+            )
+            if _invoice_header_stop and _invoice_header_stop.start() > 200:
+                text = text[:_invoice_header_stop.start() + 200]
 
         # 3. Усечение: Qwen 2.5 7B эффективно работает до ~3000 токенов
         MAX_TEXT_CHARS = 4000
