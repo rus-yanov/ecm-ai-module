@@ -1,11 +1,11 @@
 {
   "type_classification": {
-    "overall_accuracy": 0.0909,
+    "overall_accuracy": 0.9091,
     "per_type_accuracy": {
       "INVOICE": 0.0,
-      "ACT": 0.5,
-      "ORDER": 0.0,
-      "WAYBILL": 0.0,
+      "ACT": 1.0,
+      "ORDER": 0.75,
+      "WAYBILL": 1.0,
       "PAYMENT": 0.0
     },
     "confusion_matrix": {
@@ -19,27 +19,27 @@
       },
       "ACT": {
         "INVOICE": 0,
-        "ACT": 1,
+        "ACT": 2,
         "ORDER": 0,
         "WAYBILL": 0,
         "PAYMENT": 0,
-        "UNKNOWN": 1
+        "UNKNOWN": 0
       },
       "ORDER": {
         "INVOICE": 0,
         "ACT": 0,
-        "ORDER": 0,
+        "ORDER": 3,
         "WAYBILL": 0,
         "PAYMENT": 0,
-        "UNKNOWN": 4
+        "UNKNOWN": 1
       },
       "WAYBILL": {
         "INVOICE": 0,
         "ACT": 0,
         "ORDER": 0,
-        "WAYBILL": 0,
+        "WAYBILL": 5,
         "PAYMENT": 0,
-        "UNKNOWN": 5
+        "UNKNOWN": 0
       },
       "PAYMENT": {
         "INVOICE": 0,
@@ -55,11 +55,11 @@
     "per_type": {
       "ACT": {
         "act_date": {
-          "precision": 1.0,
+          "precision": 0.5,
           "recall": 0.5,
-          "f1": 0.667,
+          "f1": 0.5,
           "matched": 1,
-          "extracted": 1,
+          "extracted": 2,
           "expected": 2
         },
         "act_number": {
@@ -97,71 +97,71 @@
       },
       "ORDER": {
         "order_date": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "matched": 0,
-          "extracted": 0,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "matched": 1,
+          "extracted": 1,
           "expected": 4
         },
         "order_number": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "matched": 0,
-          "extracted": 0,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "matched": 1,
+          "extracted": 1,
           "expected": 4
         },
         "title": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "matched": 0,
-          "extracted": 0,
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "matched": 1,
+          "extracted": 1,
           "expected": 4
         }
       },
       "WAYBILL": {
         "document_date": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "matched": 0,
-          "extracted": 0,
+          "precision": 0.2,
+          "recall": 0.2,
+          "f1": 0.2,
+          "matched": 1,
+          "extracted": 5,
           "expected": 5
         },
         "document_number": {
-          "precision": 0.0,
-          "recall": 0.0,
-          "f1": 0.0,
-          "matched": 0,
-          "extracted": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "matched": 5,
+          "extracted": 5,
           "expected": 5
         }
       }
     },
     "avg_f1_per_type": {
-      "ACT": 0.667,
-      "ORDER": 0.0,
-      "WAYBILL": 0.0
+      "ACT": 0.634,
+      "ORDER": 0.4,
+      "WAYBILL": 0.6
     }
   },
   "confidence_calibration": {
-    "mean_confidence_correct": 0.98,
+    "mean_confidence_correct": 0.857,
     "mean_confidence_incorrect": 0.0,
-    "pct_correct_with_high_confidence": 1.0
+    "pct_correct_with_high_confidence": 0.9
   },
   "manual_review": {
-    "review_rate": 0.0,
-    "useful_flag_rate": 0.0,
-    "total_flagged": 0,
-    "useful_flags": 0
+    "review_rate": 0.5455,
+    "useful_flag_rate": 0.8333,
+    "total_flagged": 6,
+    "useful_flags": 5
   },
   "performance": {
-    "mean_sec": 173.94,
-    "median_sec": 180.13,
-    "p95_sec": 180.14,
-    "pct_within_30s": 0.0,
+    "mean_sec": 42.57,
+    "median_sec": 26.37,
+    "p95_sec": 131.57,
+    "pct_within_30s": 0.5455,
     "total_docs": 11
   }
 }

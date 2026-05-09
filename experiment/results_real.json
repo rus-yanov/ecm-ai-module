@@ -6,7 +6,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": false,
-    "processing_time_sec": 112.0592515419703,
+    "processing_time_sec": 73.13562520899995,
     "attributes": {
       "act_number": {
         "expected": "15",
@@ -44,17 +44,17 @@
   {
     "filename": "Образец-Акта-сдачи-приемки-выполненных-работ-услуг.pdf",
     "expected_type": "ACT",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 180.1229784998577,
+    "predicted_type": "ACT",
+    "type_correct": true,
+    "type_confidence": 0.98,
+    "requires_manual_review": true,
+    "processing_time_sec": 32.19876841699988,
     "attributes": {
       "act_date": {
         "expected": "2022-01-18",
-        "extracted": null,
+        "extracted": "2024-01-??",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.7499999999999999
       },
       "executor_inn": {
         "expected": "7705010473",
@@ -68,23 +68,23 @@
   {
     "filename": "Требование.pdf",
     "expected_type": "WAYBILL",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
+    "predicted_type": "WAYBILL",
+    "type_correct": true,
+    "type_confidence": 0.95,
     "requires_manual_review": false,
-    "processing_time_sec": 180.12709687510505,
+    "processing_time_sec": 31.789342583000007,
     "attributes": {
       "document_number": {
         "expected": "77",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "77",
+        "match": true,
+        "confidence": 0.988
       },
       "document_date": {
         "expected": "2025-03-28",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "2025-03-28",
+        "match": true,
+        "confidence": 0.976
       }
     },
     "error": null
@@ -92,23 +92,23 @@
   {
     "filename": "Требование2.pdf",
     "expected_type": "WAYBILL",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 180.13299179193564,
+    "predicted_type": "WAYBILL",
+    "type_correct": true,
+    "type_confidence": 0.85,
+    "requires_manual_review": true,
+    "processing_time_sec": 24.49323400000003,
     "attributes": {
       "document_number": {
         "expected": "109",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "109",
+        "match": true,
+        "confidence": 0.982
       },
       "document_date": {
         "expected": "2025-03-03",
-        "extracted": null,
+        "extracted": "2024-09-05",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.976
       }
     },
     "error": null
@@ -116,23 +116,23 @@
   {
     "filename": "Требование3.pdf",
     "expected_type": "WAYBILL",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 180.142167332815,
+    "predicted_type": "WAYBILL",
+    "type_correct": true,
+    "type_confidence": 0.92,
+    "requires_manual_review": true,
+    "processing_time_sec": 18.142543208000006,
     "attributes": {
       "document_number": {
         "expected": "570/374",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "570/374",
+        "match": true,
+        "confidence": 0.988
       },
       "document_date": {
         "expected": "2025-03-17",
-        "extracted": null,
+        "extracted": "2025-03-10",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.976
       }
     },
     "error": null
@@ -140,23 +140,23 @@
   {
     "filename": "Требование4.pdf",
     "expected_type": "WAYBILL",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 180.132308332948,
+    "predicted_type": "WAYBILL",
+    "type_correct": true,
+    "type_confidence": 0.98,
+    "requires_manual_review": true,
+    "processing_time_sec": 17.171903791999966,
     "attributes": {
       "document_number": {
         "expected": "1479",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "1479",
+        "match": true,
+        "confidence": 0.994
       },
       "document_date": {
         "expected": "2025-03-21",
-        "extracted": null,
+        "extracted": "2025-03-18",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.994
       }
     },
     "error": null
@@ -164,23 +164,23 @@
   {
     "filename": "Требование5.pdf",
     "expected_type": "WAYBILL",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 180.13024016702548,
+    "predicted_type": "WAYBILL",
+    "type_correct": true,
+    "type_confidence": 0.95,
+    "requires_manual_review": true,
+    "processing_time_sec": 20.920487583000067,
     "attributes": {
       "document_number": {
         "expected": "398з",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "398з",
+        "match": true,
+        "confidence": 0.982
       },
       "document_date": {
         "expected": "2025-03-13",
-        "extracted": null,
+        "extracted": "2025-03-16",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.964
       }
     },
     "error": null
@@ -188,29 +188,29 @@
   {
     "filename": "29_06_17_Prikaz_2.pdf",
     "expected_type": "ORDER",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 180.1362793748267,
+    "predicted_type": "ORDER",
+    "type_correct": true,
+    "type_confidence": 0.98,
+    "requires_manual_review": true,
+    "processing_time_sec": 26.373358874999894,
     "attributes": {
       "order_number": {
         "expected": "5-к",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "5-к",
+        "match": true,
+        "confidence": 0.994
       },
       "order_date": {
         "expected": "2017-04-20",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "2017-04-20",
+        "match": true,
+        "confidence": 0.994
       },
       "title": {
         "expected": "Об оплате сверхурочной работы",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "Об оплате сверхурочной работы",
+        "match": true,
+        "confidence": 0.988
       }
     },
     "error": null
@@ -218,11 +218,11 @@
   {
     "filename": "Приказ о завершении освоения образовательной программы_ЭБЦИ_2026.pdf",
     "expected_type": "ORDER",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
+    "predicted_type": "ORDER",
+    "type_correct": true,
+    "type_confidence": 0.98,
     "requires_manual_review": false,
-    "processing_time_sec": 180.1301633748226,
+    "processing_time_sec": 24.85983195799986,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/200426-3",
@@ -248,11 +248,11 @@
   {
     "filename": "Приказ о проведении ГИА студентов_ЭБЦИ_2026.pdf",
     "expected_type": "ORDER",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
+    "predicted_type": "ORDER",
+    "type_correct": true,
     "type_confidence": 0.0,
     "requires_manual_review": false,
-    "processing_time_sec": 180.13091854099184,
+    "processing_time_sec": 131.57343749999995,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/300426-5",
@@ -282,7 +282,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": false,
-    "processing_time_sec": 180.13496216596104,
+    "processing_time_sec": 67.6172287920001,
     "attributes": {
       "order_date": {
         "expected": "2026-04-28",
