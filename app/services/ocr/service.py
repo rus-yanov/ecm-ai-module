@@ -21,7 +21,7 @@ class OcrService:
         #   • text_detection_model_name / text_recognition_model_name — explicit model selection
         #     (when set, `lang` and `ocr_version` are ignored)
         #   • PP-OCRv4_mobile_det  — lightweight det (~5 MB), fast on CPU
-        #   • eslav_PP-OCRv5_mobile_rec — Russian/Slavic rec; already cached from first run
+        #   • eslav_PP-OCRv5_mobile_rec — Russian/Slavic rec; required for Cyrillic
         #   • doc-preprocessor and textline-orientation disabled to avoid heavy auxiliary models
         self._ocr = PaddleOCR(
             device="cpu",

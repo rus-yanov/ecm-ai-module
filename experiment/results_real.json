@@ -4,33 +4,33 @@
     "expected_type": "ACT",
     "predicted_type": "ACT",
     "type_correct": true,
-    "type_confidence": 0.98,
-    "requires_manual_review": false,
-    "processing_time_sec": 64.22272454099948,
+    "type_confidence": 0.85,
+    "requires_manual_review": true,
+    "processing_time_sec": 34.58294174999901,
     "attributes": {
       "act_number": {
         "expected": "15",
-        "extracted": "15",
-        "match": true,
-        "confidence": 0.994
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       },
       "act_date": {
         "expected": "2026-02-12",
-        "extracted": "2026-02-12",
-        "match": true,
-        "confidence": 0.982
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       },
       "executor": {
         "expected": "Общество с ограниченной ответственностью \"А-Сервис\"",
-        "extracted": "Общество с ограниченной ответственностью \"А-Сервис\"",
-        "match": true,
-        "confidence": 0.8680000000000001
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       },
       "executor_inn": {
         "expected": "7632014924",
-        "extracted": "7632014924",
-        "match": true,
-        "confidence": 0.994
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       },
       "receiver_name": {
         "expected": "Зудилин Андрей Васильевич ИП",
@@ -46,15 +46,15 @@
     "expected_type": "ACT",
     "predicted_type": "ACT",
     "type_correct": true,
-    "type_confidence": 0.98,
+    "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 31.92818491700018,
+    "processing_time_sec": 30.655026749998797,
     "attributes": {
       "act_date": {
         "expected": "2022-01-18",
-        "extracted": "2024-01-??",
+        "extracted": null,
         "match": false,
-        "confidence": 0.7499999999999999
+        "confidence": 0.0
       },
       "executor_inn": {
         "expected": "7705010473",
@@ -71,8 +71,8 @@
     "predicted_type": "WAYBILL",
     "type_correct": true,
     "type_confidence": 0.95,
-    "requires_manual_review": true,
-    "processing_time_sec": 23.13951920799991,
+    "requires_manual_review": false,
+    "processing_time_sec": 31.29769424999904,
     "attributes": {
       "document_number": {
         "expected": "77",
@@ -84,7 +84,7 @@
         "expected": "2025-03-28",
         "extracted": "2025-03-28",
         "match": true,
-        "confidence": 0.976
+        "confidence": 0.9099999999999999
       }
     },
     "error": null
@@ -94,21 +94,21 @@
     "expected_type": "WAYBILL",
     "predicted_type": "WAYBILL",
     "type_correct": true,
-    "type_confidence": 0.85,
+    "type_confidence": 0.93,
     "requires_manual_review": true,
-    "processing_time_sec": 22.223554750000403,
+    "processing_time_sec": 32.3567490839996,
     "attributes": {
       "document_number": {
         "expected": "109",
         "extracted": "109",
         "match": true,
-        "confidence": 0.982
+        "confidence": 0.994
       },
       "document_date": {
         "expected": "2025-03-03",
-        "extracted": "2024-09-05",
-        "match": false,
-        "confidence": 0.976
+        "extracted": "2025-03-03",
+        "match": true,
+        "confidence": 0.9099999999999999
       }
     },
     "error": null
@@ -120,7 +120,7 @@
     "type_correct": true,
     "type_confidence": 0.92,
     "requires_manual_review": true,
-    "processing_time_sec": 20.463073500000064,
+    "processing_time_sec": 30.5083764589981,
     "attributes": {
       "document_number": {
         "expected": "570/374",
@@ -130,9 +130,9 @@
       },
       "document_date": {
         "expected": "2025-03-17",
-        "extracted": "2025-03-10",
-        "match": false,
-        "confidence": 0.976
+        "extracted": "2025-03-17",
+        "match": true,
+        "confidence": 0.9099999999999999
       }
     },
     "error": null
@@ -142,9 +142,9 @@
     "expected_type": "WAYBILL",
     "predicted_type": "WAYBILL",
     "type_correct": true,
-    "type_confidence": 0.98,
+    "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 22.219425041999784,
+    "processing_time_sec": 29.55498449999868,
     "attributes": {
       "document_number": {
         "expected": "1479",
@@ -154,9 +154,9 @@
       },
       "document_date": {
         "expected": "2025-03-21",
-        "extracted": "2025-03-18",
-        "match": false,
-        "confidence": 0.976
+        "extracted": "2025-03-21",
+        "match": true,
+        "confidence": 0.9099999999999999
       }
     },
     "error": null
@@ -168,19 +168,19 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 22.10580929200023,
+    "processing_time_sec": 38.40204662500037,
     "attributes": {
       "document_number": {
         "expected": "398з",
         "extracted": "398з",
         "match": true,
-        "confidence": 0.982
+        "confidence": 0.994
       },
       "document_date": {
         "expected": "2025-03-13",
-        "extracted": "2025-03-16",
-        "match": false,
-        "confidence": 0.964
+        "extracted": "2025-03-13",
+        "match": true,
+        "confidence": 0.9099999999999999
       }
     },
     "error": null
@@ -190,15 +190,15 @@
     "expected_type": "ORDER",
     "predicted_type": "ORDER",
     "type_correct": true,
-    "type_confidence": 0.98,
+    "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 18.14027358400017,
+    "processing_time_sec": 38.8525693340016,
     "attributes": {
       "order_number": {
         "expected": "5-к",
         "extracted": "5-к",
         "match": true,
-        "confidence": 0.994
+        "confidence": 0.988
       },
       "order_date": {
         "expected": "2017-04-20",
@@ -221,26 +221,26 @@
     "predicted_type": "ORDER",
     "type_correct": true,
     "type_confidence": 0.99,
-    "requires_manual_review": false,
-    "processing_time_sec": 25.872084957999505,
+    "requires_manual_review": true,
+    "processing_time_sec": 31.52937916600058,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/200426-3",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "2.10-02/200426-3",
+        "match": true,
+        "confidence": 0.994
       },
       "order_date": {
         "expected": "2026-04-20",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "2026-04-20",
+        "match": true,
+        "confidence": 0.994
       },
       "title": {
         "expected": "О завершении освоения образовательной программы «Электронный бизнес и",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "О завершении освоения образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса",
+        "match": true,
+        "confidence": 0.982
       }
     },
     "error": null
@@ -250,27 +250,27 @@
     "expected_type": "ORDER",
     "predicted_type": "ORDER",
     "type_correct": true,
-    "type_confidence": 0.0,
+    "type_confidence": 0.95,
     "requires_manual_review": false,
-    "processing_time_sec": 141.31187141699957,
+    "processing_time_sec": 33.3712397920026,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/300426-5",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "2.10-02/300426-5",
+        "match": true,
+        "confidence": 0.988
       },
       "order_date": {
         "expected": "2026-06-02",
-        "extracted": null,
+        "extracted": "2026-04-30",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.994
       },
       "title": {
         "expected": "О проведении государственной итоговой аттестации студентов образовательной",
-        "extracted": null,
+        "extracted": "О проведении государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса в 2026 году",
         "match": false,
-        "confidence": 0.0
+        "confidence": 1.0
       }
     },
     "error": null
@@ -278,20 +278,62 @@
   {
     "filename": "Приказ о составе ГЭК по проведению ГИА студентов_ЭБЦИ_2026.pdf",
     "expected_type": "ORDER",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
-    "requires_manual_review": false,
-    "processing_time_sec": 19.50717691600039,
+    "predicted_type": "ORDER",
+    "type_correct": true,
+    "type_confidence": 0.99,
+    "requires_manual_review": true,
+    "processing_time_sec": 26.6429895830006,
     "attributes": {
       "order_date": {
         "expected": "2026-04-28",
+        "extracted": "Не указана дата",
+        "match": false,
+        "confidence": 0.7499999999999999
+      },
+      "title": {
+        "expected": "О составе государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса ",
+        "extracted": "О назначении состава государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации»",
+        "match": true,
+        "confidence": 0.988
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "ОПЛАЧЕНО_ПТС_АКТ_сч факт_СБИС_апр  2023_2 952 112,53.pdf",
+    "expected_type": "INVOICE",
+    "predicted_type": "INVOICE",
+    "type_correct": true,
+    "type_confidence": 0.98,
+    "requires_manual_review": false,
+    "processing_time_sec": 51.27132533300028,
+    "attributes": {
+      "invoice_number": {
+        "expected": "760050034934/7190",
+        "extracted": "760050034934/7190",
+        "match": true,
+        "confidence": 0.994
+      },
+      "invoice_date": {
+        "expected": "2023-04-30",
+        "extracted": "2023-04-30",
+        "match": true,
+        "confidence": 0.982
+      },
+      "seller_name": {
+        "expected": "Публичное акционерное общество «Т Плюс»",
+        "extracted": "Публичное акционерное общество «Т Плюс»",
+        "match": true,
+        "confidence": 0.976
+      },
+      "seller_inn": {
+        "expected": "6315376946",
         "extracted": null,
         "match": false,
         "confidence": 0.0
       },
-      "title": {
-        "expected": "О составе государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса ",
+      "amount_with_vat": {
+        "expected": "2952112.53",
         "extracted": null,
         "match": false,
         "confidence": 0.0

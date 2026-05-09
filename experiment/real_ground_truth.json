@@ -191,5 +191,18 @@
     "document_type": "ORDER",
     "is_scan": true,
     "attributes": {}
+  },
+  {
+    "filename": "ОПЛАЧЕНО_ПТС_АКТ_сч факт_СБИС_апр  2023_2 952 112,53.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/счет-фактура/ОПЛАЧЕНО_ПТС_АКТ_сч факт_СБИС_апр  2023_2 952 112,53.pdf",
+    "document_type": "INVOICE",
+    "is_scan": false,
+    "attributes": {
+      "invoice_number": "760050034934/7190",
+      "invoice_date": "2023-04-30",
+      "seller_name": "Публичное акционерное общество «Т Плюс»",
+      "seller_inn": "6315376946",
+      "amount_with_vat": "2952112.53"
+    }
   }
 ]

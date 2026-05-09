@@ -11,3 +11,8 @@ out/
 .env
 corpus/raw/
 corpus/scanned/
+.claude/
+.idea/
+ollama_models/
+*.gguf
+experiment/docs/
