@@ -61,6 +61,60 @@ Output: {"document_type":"ORDER","type_confidence":0.97,"attributes":[{"name":"o
 
 _FALLBACK = (DocumentType.UNKNOWN, 0.0, [])
 
+# Нормализация имён атрибутов: модель возвращает английские/CamelCase варианты,
+# сводим к нашим snake_case именам.
+_ATTR_NAME_MAP: dict[str, str] = {
+    # INVOICE
+    "invoice number":       "invoice_number",
+    "invoice date":         "invoice_date",
+    "supplier name":        "seller_name",
+    "seller name":          "seller_name",
+    "supplier inn":         "seller_inn",
+    "seller inn":           "seller_inn",
+    "buyer name":           "buyer_name",
+    "customer name":        "buyer_name",
+    "buyer inn":            "buyer_inn",
+    "customer inn":         "buyer_inn",
+    "total amount":         "amount_with_vat",
+    "invoice total amount": "amount_with_vat",
+    "amount with vat":      "amount_with_vat",
+    "total with tax":       "amount_with_vat",
+    "tax amount":           "vat_amount",
+    "vat amount":           "vat_amount",
+    # ACT
+    "act number":           "act_number",
+    "act date":             "act_date",
+    "executor name":        "executor",
+    "executor inn":         "executor_inn",
+    "receiver":             "receiver_name",
+    # ORDER
+    "order number":         "order_number",
+    "order date":           "order_date",
+    # WAYBILL
+    "document number":      "document_number",
+    "document date":        "document_date",
+    "sender":               "sender_department",
+    "receiver department":  "receiver_department",
+    "operation code":       "operation_type_code",
+    "items":                "items_description",
+    # PAYMENT
+    "document number":      "document_number",
+    "payer name":           "payer_name",
+    "payer inn":            "payer_inn",
+    "receiver name":        "receiver_name",
+    "receiver inn":         "receiver_inn",
+    "payment purpose":      "payment_purpose",
+}
+
+
+def _normalize_attr_name(name: str) -> str:
+    """Converts English/CamelCase/space-separated names to our snake_case canonical form."""
+    normalized = name.strip().lower().replace("-", " ").replace("_", " ")
+    if normalized in _ATTR_NAME_MAP:
+        return _ATTR_NAME_MAP[normalized]
+    # snake_case passthrough (already canonical or unknown)
+    return name.strip().lower().replace(" ", "_").replace("-", "_")
+
 _OLLAMA_RESPONSE_SCHEMA = {
     "type": "object",
     "properties": {
@@ -142,7 +196,7 @@ class LlmService:
             try:
                 attributes.append(
                     ExtractedAttribute(
-                        name=item["name"],
+                        name=_normalize_attr_name(item["name"]),
                         raw_value=item.get("value"),
                         normalized_value=item.get("value"),
                         confidence=float(item.get("confidence", 0.0)),
