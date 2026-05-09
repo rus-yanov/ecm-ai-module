@@ -253,7 +253,7 @@ class LlmService:
                         "messages": [{"role": "user", "content": prompt}],
                         "format": _OLLAMA_RESPONSE_SCHEMA,
                         "stream": False,
-                        "options": {"temperature": 0.1, "top_p": 0.9},
+                        "options": {"temperature": 0.0, "top_p": 0.9},
                     },
                 )
                 response.raise_for_status()
