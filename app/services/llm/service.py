@@ -326,29 +326,29 @@ class LlmService:
         # последующие даты — даты позиций/операций.
         if doc_type == DocumentType.WAYBILL:
             doc_date_attr = next((a for a in attributes if a.name == "document_date"), None)
-            if doc_date_attr is None or doc_date_attr.confidence < 0.9:
-                first_date_match = re.search(r'\b(\d{2}\.\d{2}\.\d{4})\b', original_text)
-                if first_date_match:
-                    normalized = _normalize_date_value(first_date_match.group(1))
-                    if doc_date_attr:
-                        attributes = [
-                            ExtractedAttribute(
-                                name=a.name,
-                                raw_value=normalized if a.name == "document_date" else a.raw_value,
-                                normalized_value=normalized if a.name == "document_date" else a.normalized_value,
-                                confidence=0.85 if a.name == "document_date" else a.confidence,
-                                requires_verification=False,
-                            )
-                            for a in attributes
-                        ]
-                    else:
-                        attributes.append(ExtractedAttribute(
-                            name="document_date",
-                            raw_value=normalized,
-                            normalized_value=normalized,
-                            confidence=0.85,
+            # Form М-11: first DD.MM.YYYY is always "Дата составления"; model is unreliable here.
+            first_date_match = re.search(r'\b(\d{2}\.\d{2}\.\d{4})\b', original_text)
+            if first_date_match:
+                normalized = _normalize_date_value(first_date_match.group(1))
+                if doc_date_attr:
+                    attributes = [
+                        ExtractedAttribute(
+                            name=a.name,
+                            raw_value=normalized if a.name == "document_date" else a.raw_value,
+                            normalized_value=normalized if a.name == "document_date" else a.normalized_value,
+                            confidence=0.85 if a.name == "document_date" else a.confidence,
                             requires_verification=False,
-                        ))
+                        )
+                        for a in attributes
+                    ]
+                else:
+                    attributes.append(ExtractedAttribute(
+                        name="document_date",
+                        raw_value=normalized,
+                        normalized_value=normalized,
+                        confidence=0.85,
+                        requires_verification=False,
+                    ))
 
         log.info(
             "LLM classify_and_extract",
