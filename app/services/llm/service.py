@@ -1,4 +1,5 @@
 import json
+import re
 import time
 
 import httpx
@@ -141,6 +142,9 @@ class LlmService:
         MAX_TEXT_CHARS = 4000  # Qwen 2.5 7B эффективно работает до ~3000 токенов
         if len(text) > MAX_TEXT_CHARS:
             text = text[:MAX_TEXT_CHARS] + "\n[ТЕКСТ УСЕЧЁН ДО 4000 СИМВОЛОВ]"
+
+        text = re.sub(r'(?m)^\s*\d{1,2}[аб]?\s*$', '', text)
+        text = re.sub(r'\n{3,}', '\n\n', text)
 
         prompt = self._build_prompt(text, schema)
         start = time.monotonic()
