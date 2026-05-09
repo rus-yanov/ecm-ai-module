@@ -217,12 +217,23 @@ class LlmService:
     ) -> tuple[DocumentType, float, list[ExtractedAttribute]]:
         log = logger.bind(document_id=document_id) if document_id else logger
 
-        MAX_TEXT_CHARS = 4000  # Qwen 2.5 7B эффективно работает до ~3000 токенов
-        if len(text) > MAX_TEXT_CHARS:
-            text = text[:MAX_TEXT_CHARS] + "\n[ТЕКСТ УСЕЧЁН ДО 4000 СИМВОЛОВ]"
-
+        # 1. Убираем PDF-артефакты (строки из номеров колонок таблиц)
         text = re.sub(r'(?m)^\s*\d{1,2}[аб]?\s*$', '', text)
         text = re.sub(r'\n{3,}', '\n\n', text)
+
+        # 2. Для счётов-фактур: оставляем только шапку документа (до первой большой таблицы).
+        #    Таблица с колонками ПП-1137 начинается после "Итого" / "к оплате".
+        _invoice_header_stop = re.search(
+            r'(?im)^\s*(итого|к\s+оплате|наименование\s+товара)',
+            text
+        )
+        if _invoice_header_stop and _invoice_header_stop.start() > 200:
+            text = text[:_invoice_header_stop.start() + 200]
+
+        # 3. Усечение: Qwen 2.5 7B эффективно работает до ~3000 токенов
+        MAX_TEXT_CHARS = 4000
+        if len(text) > MAX_TEXT_CHARS:
+            text = text[:MAX_TEXT_CHARS] + "\n[ТЕКСТ УСЕЧЁН ДО 4000 СИМВОЛОВ]"
 
         prompt = self._build_prompt(text, schema)
         start = time.monotonic()
