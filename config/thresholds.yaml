@@ -25,18 +25,24 @@ document_types:
   ACT:
     attributes:
       amount: 0.85
+      act_date: 0.65
+      act_number: 0.65
+      executor: 0.65
+      executor_inn: 0.65
+      receiver_name: 0.65
   WAYBILL:
     attributes:
       document_number: 0.8
-      document_date: 0.85
+      document_date: 0.80
       sender_department: 0.75
       receiver_department: 0.75
       operation_type_code: 0.7
       items_description: 0.65
   ORDER:
     attributes:
-      order_number: 0.82
-      order_date: 0.85
+      order_number: 0.77
+      order_date: 0.80
       organization_name: 0.78
       order_subject: 0.75
       signatory_position: 0.7
+      title: 0.65
