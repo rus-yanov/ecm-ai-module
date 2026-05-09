@@ -108,9 +108,11 @@ class LlmService:
 
         raw_type = data.get("document_type")
         if not raw_type:
-            # Модель вернула null — инферируем по характерным ключам ответа
+            # Модель вернула null — инферируем по характерным ключам ответа.
+            # Модель нестабильна: иногда кладёт поля в верхний уровень, иногда нет.
             keys = set(data.keys())
-            if keys & {"invoice_number", "seller_inn", "seller_name", "buyer_inn"}:
+            if keys & {"invoice_number", "seller_inn", "seller_name", "buyer_inn",
+                       "seller", "total_amount_with_tax", "total_tax_amount"}:
                 raw_type = "INVOICE"
             elif keys & {"act_number", "act_date", "executor"}:
                 raw_type = "ACT"
