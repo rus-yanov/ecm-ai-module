@@ -61,6 +61,30 @@ Output: {"document_type":"ORDER","type_confidence":0.97,"attributes":[{"name":"o
 
 _FALLBACK = (DocumentType.UNKNOWN, 0.0, [])
 
+_OLLAMA_RESPONSE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "document_type": {
+            "type": "string",
+            "enum": ["PAYMENT", "INVOICE", "ACT", "WAYBILL", "ORDER", "UNKNOWN"],
+        },
+        "type_confidence": {"type": "number"},
+        "attributes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name":       {"type": "string"},
+                    "value":      {"type": ["string", "null"]},
+                    "confidence": {"type": "number"},
+                },
+                "required": ["name", "value", "confidence"],
+            },
+        },
+    },
+    "required": ["document_type", "type_confidence", "attributes"],
+}
+
 
 class LlmService:
     # ------------------------------------------------------------------
@@ -106,65 +130,27 @@ class LlmService:
         except json.JSONDecodeError:
             return _FALLBACK
 
-        raw_type = data.get("document_type")
-        if not raw_type:
-            # Модель вернула null — инферируем по характерным ключам ответа.
-            # Модель нестабильна: иногда кладёт поля в верхний уровень, иногда нет.
-            keys = set(data.keys())
-            if keys & {"invoice_number", "seller_inn", "seller_name", "buyer_inn",
-                       "seller", "total_amount_with_tax", "total_tax_amount"}:
-                raw_type = "INVOICE"
-            elif keys & {"act_number", "act_date", "executor"}:
-                raw_type = "ACT"
-            elif keys & {"order_number", "order_date"}:
-                raw_type = "ORDER"
-            elif keys & {"document_number", "sender_department", "receiver_department"}:
-                raw_type = "WAYBILL"
-            elif keys & {"payer_inn", "payer_name", "payment_purpose"}:
-                raw_type = "PAYMENT"
-            else:
-                return _FALLBACK
         try:
-            doc_type = DocumentType(raw_type.upper())
-        except (ValueError, AttributeError):
+            doc_type = DocumentType(data["document_type"].upper())
+        except (KeyError, ValueError, AttributeError):
             return _FALLBACK
 
         type_confidence = float(data.get("type_confidence", 0.0))
 
         attributes: list[ExtractedAttribute] = []
-        raw_attrs = data.get("attributes", [])
-
-        if raw_attrs:
-            # Стандартный формат: [{"name": ..., "value": ..., "confidence": ...}]
-            for item in raw_attrs:
-                try:
-                    attributes.append(
-                        ExtractedAttribute(
-                            name=item["name"],
-                            raw_value=item.get("value"),
-                            normalized_value=item.get("value"),
-                            confidence=float(item.get("confidence", 0.0)),
-                            requires_verification=False,
-                        )
-                    )
-                except (KeyError, TypeError, ValueError):
-                    continue
-        else:
-            # Fallback: модель вернула плоские ключи вместо массива attributes.
-            # Выбираем строковые скалярные поля верхнего уровня как атрибуты.
-            _SKIP = {"document_type", "type_confidence", "attributes"}
-            for key, val in data.items():
-                if key in _SKIP or not isinstance(val, (str, int, float)) or val is None:
-                    continue
+        for item in data.get("attributes", []):
+            try:
                 attributes.append(
                     ExtractedAttribute(
-                        name=key,
-                        raw_value=str(val),
-                        normalized_value=str(val),
-                        confidence=0.7,
-                        requires_verification=True,
+                        name=item["name"],
+                        raw_value=item.get("value"),
+                        normalized_value=item.get("value"),
+                        confidence=float(item.get("confidence", 0.0)),
+                        requires_verification=False,
                     )
                 )
+            except (KeyError, TypeError, ValueError):
+                continue
 
         return doc_type, type_confidence, attributes
 
@@ -197,7 +183,7 @@ class LlmService:
                     json={
                         "model": settings.ollama_model,
                         "messages": [{"role": "user", "content": prompt}],
-                        "format": "json",
+                        "format": _OLLAMA_RESPONSE_SCHEMA,
                         "stream": False,
                         "options": {"temperature": 0.1, "top_p": 0.9},
                     },
