@@ -106,9 +106,25 @@ class LlmService:
         except json.JSONDecodeError:
             return _FALLBACK
 
+        raw_type = data.get("document_type")
+        if not raw_type:
+            # Модель вернула null — инферируем по характерным ключам ответа
+            keys = set(data.keys())
+            if keys & {"invoice_number", "seller_inn", "seller_name", "buyer_inn"}:
+                raw_type = "INVOICE"
+            elif keys & {"act_number", "act_date", "executor"}:
+                raw_type = "ACT"
+            elif keys & {"order_number", "order_date"}:
+                raw_type = "ORDER"
+            elif keys & {"document_number", "sender_department", "receiver_department"}:
+                raw_type = "WAYBILL"
+            elif keys & {"payer_inn", "payer_name", "payment_purpose"}:
+                raw_type = "PAYMENT"
+            else:
+                return _FALLBACK
         try:
-            doc_type = DocumentType(data["document_type"].upper())
-        except (KeyError, ValueError, AttributeError):
+            doc_type = DocumentType(raw_type.upper())
+        except (ValueError, AttributeError):
             return _FALLBACK
 
         type_confidence = float(data.get("type_confidence", 0.0))
