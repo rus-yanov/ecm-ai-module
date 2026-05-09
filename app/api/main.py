@@ -1,4 +1,5 @@
 import logging
+import re
 import time
 import uuid
 from contextlib import asynccontextmanager
@@ -23,6 +24,15 @@ structlog.configure(
 
 logging.basicConfig(level=settings.log_level)
 logger = structlog.get_logger(__name__)
+
+
+def _check_ocr_coherence(text: str, min_cyrillic_ratio: float = 0.35) -> bool:
+    """Returns False when OCR output is garbled (too few real Cyrillic words)."""
+    words = text.split()
+    if not words:
+        return False
+    cyrillic_words = re.findall(r'[а-яёА-ЯЁ]{2,}', text)
+    return len(cyrillic_words) / len(words) >= min_cyrillic_ratio
 
 
 _ocr_service = None  # singleton, initialised on first scan request
@@ -124,12 +134,34 @@ async def process_document(
             )
             return result.model_dump(mode="json")
 
-        # --- 4. ECM: schema + contractor dictionary ---
+        # --- 4. Coherence check: garbled OCR (conf > threshold but text is noise) ---
+        full_text = "\n".join(b.text for b in ocr_result.blocks) if ocr_result.blocks else filename
+        if ocr_result.blocks and not _check_ocr_coherence(full_text):
+            total = time.monotonic() - start
+            result = ProcessingResult(
+                document_id=document_id,
+                document_type=DocumentType.UNKNOWN,
+                type_confidence=0.0,
+                attributes=[],
+                ocr_result=ocr_result,
+                requires_manual_review=True,
+                total_processing_time_sec=total,
+                error="incoherent_ocr_text",
+            )
+            log.info(
+                "processing_done",
+                document_type="UNKNOWN",
+                requires_manual_review=True,
+                total_sec=round(total, 3),
+                reason="incoherent_ocr_text",
+            )
+            return result.model_dump(mode="json")
+
+        # --- 5. ECM: schema + contractor dictionary ---
         ecm = EcmAdapter()
         schema, contractors = await _gather_ecm(ecm, schema_id)
 
-        # --- 5. LLM classification + extraction (hard timeout = ollama_timeout_sec + 30 s) ---
-        full_text = "\n".join(b.text for b in ocr_result.blocks) if ocr_result.blocks else filename
+        # --- 7. LLM classification + extraction (hard timeout = ollama_timeout_sec + 30 s) ---
         try:
             doc_type, type_conf, raw_attrs = await asyncio.wait_for(
                 LlmService().classify_and_extract(full_text, schema, document_id=document_id),
@@ -139,7 +171,7 @@ async def process_document(
             log.warning("llm_timeout")
             raise HTTPException(status_code=504, detail="llm_timeout")
 
-        # --- 6. Confidence routing + normalisation ---
+        # --- 8. Confidence routing + normalisation ---
         router = ConfidenceRouter(dictionary=contractors)
         attributes = router.route(
             raw_attrs, doc_type, ocr_result.avg_confidence, router.thresholds
