@@ -107,26 +107,46 @@ class LlmService:
             return _FALLBACK
 
         try:
-            doc_type = DocumentType(data["document_type"])
-        except (KeyError, ValueError):
+            doc_type = DocumentType(data["document_type"].upper())
+        except (KeyError, ValueError, AttributeError):
             return _FALLBACK
 
         type_confidence = float(data.get("type_confidence", 0.0))
 
         attributes: list[ExtractedAttribute] = []
-        for item in data.get("attributes", []):
-            try:
+        raw_attrs = data.get("attributes", [])
+
+        if raw_attrs:
+            # Стандартный формат: [{"name": ..., "value": ..., "confidence": ...}]
+            for item in raw_attrs:
+                try:
+                    attributes.append(
+                        ExtractedAttribute(
+                            name=item["name"],
+                            raw_value=item.get("value"),
+                            normalized_value=item.get("value"),
+                            confidence=float(item.get("confidence", 0.0)),
+                            requires_verification=False,
+                        )
+                    )
+                except (KeyError, TypeError, ValueError):
+                    continue
+        else:
+            # Fallback: модель вернула плоские ключи вместо массива attributes.
+            # Выбираем строковые скалярные поля верхнего уровня как атрибуты.
+            _SKIP = {"document_type", "type_confidence", "attributes"}
+            for key, val in data.items():
+                if key in _SKIP or not isinstance(val, (str, int, float)) or val is None:
+                    continue
                 attributes.append(
                     ExtractedAttribute(
-                        name=item["name"],
-                        raw_value=item.get("value"),
-                        normalized_value=item.get("value"),
-                        confidence=float(item.get("confidence", 0.0)),
-                        requires_verification=False,
+                        name=key,
+                        raw_value=str(val),
+                        normalized_value=str(val),
+                        confidence=0.7,
+                        requires_verification=True,
                     )
                 )
-            except (KeyError, TypeError, ValueError):
-                continue
 
         return doc_type, type_confidence, attributes
 
