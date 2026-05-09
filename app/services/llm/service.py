@@ -137,6 +137,11 @@ class LlmService:
         self, text: str, schema: dict, document_id: str = ""
     ) -> tuple[DocumentType, float, list[ExtractedAttribute]]:
         log = logger.bind(document_id=document_id) if document_id else logger
+
+        MAX_TEXT_CHARS = 4000  # Qwen 2.5 7B эффективно работает до ~3000 токенов
+        if len(text) > MAX_TEXT_CHARS:
+            text = text[:MAX_TEXT_CHARS] + "\n[ТЕКСТ УСЕЧЁН ДО 4000 СИМВОЛОВ]"
+
         prompt = self._build_prompt(text, schema)
         start = time.monotonic()
 
