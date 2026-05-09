@@ -1,6 +1,7 @@
 import json
 import re
 import time
+from datetime import datetime
 
 import httpx
 import structlog
@@ -48,6 +49,10 @@ Output: {"document_type":"WAYBILL","type_confidence":0.93,"attributes":[{"name":
 Example 8 (WAYBILL, partial — no operation code):
 Input: "Требование-накладная № 15 от 01.04.2025\\nОтправитель: цех 101\\nПолучатель: склад 3\\nПозиции: Краска алкидная ПФ-115, 10 л; Кисть малярная, 5 шт"
 Output: {"document_type":"WAYBILL","type_confidence":0.91,"attributes":[{"name":"document_number","value":"15","confidence":0.99},{"name":"document_date","value":"2025-04-01","confidence":0.98},{"name":"sender_department","value":"цех 101","confidence":0.96},{"name":"receiver_department","value":"склад 3","confidence":0.96},{"name":"operation_type_code","value":null,"confidence":0.0},{"name":"items_description","value":"Краска алкидная ПФ-115, 10 л; Кисть малярная, 5 шт","confidence":0.94}]}
+
+Example 8b (WAYBILL, Form М-11 — multiple dates, use FIRST date as document_date):
+Input: "Форма № М-11 Код по ОКУД 0315006 Дата составления Код вида операции Отправитель Получатель\\n03.03.2025\\n20\\nск.110\\n362-1кл\\n05.09.2024\\nКабель ВВГ 3х2.5"
+Output: {"document_type":"WAYBILL","type_confidence":0.95,"attributes":[{"name":"document_number","value":null,"confidence":0.0},{"name":"document_date","value":"2025-03-03","confidence":0.97},{"name":"sender_department","value":"ск.110","confidence":0.94},{"name":"receiver_department","value":"362-1кл","confidence":0.94},{"name":"operation_type_code","value":"20","confidence":0.92},{"name":"items_description","value":"Кабель ВВГ 3х2.5","confidence":0.91}]}
 
 Example 9 (ORDER):
 Input: "ПРИКАЗ №П-2024-156 от 01.07.2024\\nО введении в действие регламента информационной безопасности\\nПодписант: Генеральный директор Смирнов А.В.\\nСрок исполнения: 01.08.2024"
@@ -112,8 +117,47 @@ def _normalize_attr_name(name: str) -> str:
     normalized = name.strip().lower().replace("-", " ").replace("_", " ")
     if normalized in _ATTR_NAME_MAP:
         return _ATTR_NAME_MAP[normalized]
-    # snake_case passthrough (already canonical or unknown)
     return name.strip().lower().replace(" ", "_").replace("-", "_")
+
+
+_RU_MONTHS = {
+    "января": 1, "февраля": 2, "марта": 3, "апреля": 4,
+    "мая": 5, "июня": 6, "июля": 7, "августа": 8,
+    "сентября": 9, "октября": 10, "ноября": 11, "декабря": 12,
+}
+
+def _normalize_date_value(value: str | None) -> str | None:
+    """Normalizes any recognized date string to YYYY-MM-DD; returns value unchanged if unrecognized."""
+    if not value:
+        return value
+    v = value.strip().rstrip("г. ").strip()
+
+    # YYYY-MM-DD already canonical
+    if re.fullmatch(r'\d{4}-\d{2}-\d{2}', v):
+        return v
+
+    # DD.MM.YYYY or DD/MM/YYYY
+    m = re.fullmatch(r'(\d{1,2})[./](\d{1,2})[./](\d{4})', v)
+    if m:
+        d, mo, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        try:
+            return datetime(y, mo, d).strftime('%Y-%m-%d')
+        except ValueError:
+            return value
+
+    # D MMMM YYYY (Russian)
+    m = re.fullmatch(r'(\d{1,2})\s+([а-яёА-ЯЁ]+)\s+(\d{4})', v)
+    if m:
+        d, month_str, y = int(m.group(1)), m.group(2).lower(), int(m.group(3))
+        mo = _RU_MONTHS.get(month_str)
+        if mo:
+            try:
+                return datetime(y, mo, d).strftime('%Y-%m-%d')
+            except ValueError:
+                return value
+
+    return value
+
 
 _OLLAMA_RESPONSE_SCHEMA = {
     "type": "object",
@@ -194,11 +238,15 @@ class LlmService:
         attributes: list[ExtractedAttribute] = []
         for item in data.get("attributes", []):
             try:
+                attr_name = _normalize_attr_name(item["name"])
+                raw_val = item.get("value")
+                if attr_name.endswith("_date"):
+                    raw_val = _normalize_date_value(raw_val)
                 attributes.append(
                     ExtractedAttribute(
-                        name=_normalize_attr_name(item["name"]),
-                        raw_value=item.get("value"),
-                        normalized_value=item.get("value"),
+                        name=attr_name,
+                        raw_value=raw_val,
+                        normalized_value=raw_val,
                         confidence=float(item.get("confidence", 0.0)),
                         requires_verification=False,
                     )
