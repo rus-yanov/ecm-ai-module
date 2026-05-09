@@ -87,11 +87,11 @@
           "expected": 2
         },
         "receiver_name": {
-          "precision": 1.0,
-          "recall": 0.5,
-          "f1": 0.667,
-          "matched": 1,
-          "extracted": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "matched": 0,
+          "extracted": 0,
           "expected": 2
         }
       },
@@ -141,27 +141,27 @@
       }
     },
     "avg_f1_per_type": {
-      "ACT": 0.634,
+      "ACT": 0.5,
       "ORDER": 0.4,
       "WAYBILL": 0.6
     }
   },
   "confidence_calibration": {
-    "mean_confidence_correct": 0.857,
+    "mean_confidence_correct": 0.858,
     "mean_confidence_incorrect": 0.0,
     "pct_correct_with_high_confidence": 0.9
   },
   "manual_review": {
-    "review_rate": 0.5455,
-    "useful_flag_rate": 0.8333,
-    "total_flagged": 6,
+    "review_rate": 0.6364,
+    "useful_flag_rate": 0.7143,
+    "total_flagged": 7,
     "useful_flags": 5
   },
   "performance": {
-    "mean_sec": 42.57,
-    "median_sec": 26.37,
-    "p95_sec": 131.57,
-    "pct_within_30s": 0.5455,
+    "mean_sec": 37.38,
+    "median_sec": 22.22,
+    "p95_sec": 141.31,
+    "pct_within_30s": 0.7273,
     "total_docs": 11
   }
 }

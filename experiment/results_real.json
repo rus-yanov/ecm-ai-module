@@ -6,7 +6,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": false,
-    "processing_time_sec": 73.13562520899995,
+    "processing_time_sec": 64.22272454099948,
     "attributes": {
       "act_number": {
         "expected": "15",
@@ -34,9 +34,9 @@
       },
       "receiver_name": {
         "expected": "Зудилин Андрей Васильевич ИП",
-        "extracted": "Зудилин Андрей Васильевич ИП",
-        "match": true,
-        "confidence": 0.982
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       }
     },
     "error": null
@@ -48,7 +48,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": true,
-    "processing_time_sec": 32.19876841699988,
+    "processing_time_sec": 31.92818491700018,
     "attributes": {
       "act_date": {
         "expected": "2022-01-18",
@@ -71,8 +71,8 @@
     "predicted_type": "WAYBILL",
     "type_correct": true,
     "type_confidence": 0.95,
-    "requires_manual_review": false,
-    "processing_time_sec": 31.789342583000007,
+    "requires_manual_review": true,
+    "processing_time_sec": 23.13951920799991,
     "attributes": {
       "document_number": {
         "expected": "77",
@@ -96,7 +96,7 @@
     "type_correct": true,
     "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 24.49323400000003,
+    "processing_time_sec": 22.223554750000403,
     "attributes": {
       "document_number": {
         "expected": "109",
@@ -120,7 +120,7 @@
     "type_correct": true,
     "type_confidence": 0.92,
     "requires_manual_review": true,
-    "processing_time_sec": 18.142543208000006,
+    "processing_time_sec": 20.463073500000064,
     "attributes": {
       "document_number": {
         "expected": "570/374",
@@ -144,7 +144,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": true,
-    "processing_time_sec": 17.171903791999966,
+    "processing_time_sec": 22.219425041999784,
     "attributes": {
       "document_number": {
         "expected": "1479",
@@ -156,7 +156,7 @@
         "expected": "2025-03-21",
         "extracted": "2025-03-18",
         "match": false,
-        "confidence": 0.994
+        "confidence": 0.976
       }
     },
     "error": null
@@ -168,7 +168,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 20.920487583000067,
+    "processing_time_sec": 22.10580929200023,
     "attributes": {
       "document_number": {
         "expected": "398з",
@@ -192,7 +192,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": true,
-    "processing_time_sec": 26.373358874999894,
+    "processing_time_sec": 18.14027358400017,
     "attributes": {
       "order_number": {
         "expected": "5-к",
@@ -210,7 +210,7 @@
         "expected": "Об оплате сверхурочной работы",
         "extracted": "Об оплате сверхурочной работы",
         "match": true,
-        "confidence": 0.988
+        "confidence": 0.976
       }
     },
     "error": null
@@ -220,9 +220,9 @@
     "expected_type": "ORDER",
     "predicted_type": "ORDER",
     "type_correct": true,
-    "type_confidence": 0.98,
+    "type_confidence": 0.99,
     "requires_manual_review": false,
-    "processing_time_sec": 24.85983195799986,
+    "processing_time_sec": 25.872084957999505,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/200426-3",
@@ -252,7 +252,7 @@
     "type_correct": true,
     "type_confidence": 0.0,
     "requires_manual_review": false,
-    "processing_time_sec": 131.57343749999995,
+    "processing_time_sec": 141.31187141699957,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/300426-5",
@@ -282,7 +282,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": false,
-    "processing_time_sec": 67.6172287920001,
+    "processing_time_sec": 19.50717691600039,
     "attributes": {
       "order_date": {
         "expected": "2026-04-28",
