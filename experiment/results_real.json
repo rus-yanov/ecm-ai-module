@@ -6,7 +6,7 @@
     "type_correct": true,
     "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 34.58294174999901,
+    "processing_time_sec": 33.08648812500178,
     "attributes": {
       "act_number": {
         "expected": "15",
@@ -48,7 +48,7 @@
     "type_correct": true,
     "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 30.655026749998797,
+    "processing_time_sec": 30.88377637499798,
     "attributes": {
       "act_date": {
         "expected": "2022-01-18",
@@ -72,7 +72,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": false,
-    "processing_time_sec": 31.29769424999904,
+    "processing_time_sec": 32.73404595899774,
     "attributes": {
       "document_number": {
         "expected": "77",
@@ -96,7 +96,7 @@
     "type_correct": true,
     "type_confidence": 0.93,
     "requires_manual_review": true,
-    "processing_time_sec": 32.3567490839996,
+    "processing_time_sec": 32.52089474999957,
     "attributes": {
       "document_number": {
         "expected": "109",
@@ -120,7 +120,7 @@
     "type_correct": true,
     "type_confidence": 0.92,
     "requires_manual_review": true,
-    "processing_time_sec": 30.5083764589981,
+    "processing_time_sec": 30.666079791997618,
     "attributes": {
       "document_number": {
         "expected": "570/374",
@@ -142,9 +142,9 @@
     "expected_type": "WAYBILL",
     "predicted_type": "WAYBILL",
     "type_correct": true,
-    "type_confidence": 0.85,
+    "type_confidence": 0.93,
     "requires_manual_review": true,
-    "processing_time_sec": 29.55498449999868,
+    "processing_time_sec": 29.723437208005635,
     "attributes": {
       "document_number": {
         "expected": "1479",
@@ -168,13 +168,13 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 38.40204662500037,
+    "processing_time_sec": 38.56838787500601,
     "attributes": {
       "document_number": {
         "expected": "398з",
         "extracted": "398з",
         "match": true,
-        "confidence": 0.994
+        "confidence": 0.982
       },
       "document_date": {
         "expected": "2025-03-13",
@@ -192,7 +192,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 38.8525693340016,
+    "processing_time_sec": 41.16176375000214,
     "attributes": {
       "order_number": {
         "expected": "5-к",
@@ -216,13 +216,68 @@
     "error": null
   },
   {
+    "filename": "Pr-394_19_06_2019_O_sozdanii_TSS_kollektiv_polzovaniya_TSKP_UNU_AS_USNIKP.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 45.459244583995314,
+    "attributes": {},
+    "error": "low_ocr_confidence"
+  },
+  {
+    "filename": "Pr-histmsu_587-25-111-AC_17112025.pdf.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "ORDER",
+    "type_correct": true,
+    "type_confidence": 0.95,
+    "requires_manual_review": true,
+    "processing_time_sec": 61.923540208001214,
+    "attributes": {},
+    "error": null
+  },
+  {
+    "filename": "Prikaz_ot_02.03.2020_268_reg._v_Minust_ot_21.08.2020 (1).pdf",
+    "expected_type": "ORDER",
+    "predicted_type": null,
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 0.0,
+    "attributes": {},
+    "error": "Server error '504 Gateway Timeout' for url 'http://localhost:8000/api/v1/documents/process'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504"
+  },
+  {
+    "filename": "Приказ 1.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 29.762570416998642,
+    "attributes": {},
+    "error": "incoherent_ocr_text"
+  },
+  {
+    "filename": "Приказ Минобрнауки России № 745.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": null,
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 0.0,
+    "attributes": {},
+    "error": "Server error '504 Gateway Timeout' for url 'http://localhost:8000/api/v1/documents/process'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504"
+  },
+  {
     "filename": "Приказ о завершении освоения образовательной программы_ЭБЦИ_2026.pdf",
     "expected_type": "ORDER",
     "predicted_type": "ORDER",
     "type_correct": true,
     "type_confidence": 0.99,
     "requires_manual_review": true,
-    "processing_time_sec": 31.52937916600058,
+    "processing_time_sec": 47.36126420900109,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/200426-3",
@@ -252,7 +307,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": false,
-    "processing_time_sec": 33.3712397920026,
+    "processing_time_sec": 43.35526941699936,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/300426-5",
@@ -281,23 +336,89 @@
     "predicted_type": "ORDER",
     "type_correct": true,
     "type_confidence": 0.99,
-    "requires_manual_review": true,
-    "processing_time_sec": 26.6429895830006,
+    "requires_manual_review": false,
+    "processing_time_sec": 32.558560083001794,
     "attributes": {
       "order_date": {
         "expected": "2026-04-28",
-        "extracted": "Не указана дата",
-        "match": false,
-        "confidence": 0.7499999999999999
+        "extracted": "2026-04-28",
+        "match": true,
+        "confidence": 0.97
       },
       "title": {
         "expected": "О составе государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса ",
-        "extracted": "О назначении состава государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации»",
+        "extracted": "О утверждении состава государственной экзаменационной комиссии по проведению государственной итоговой аттестации студентов образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса",
         "match": true,
         "confidence": 0.988
       }
     },
     "error": null
+  },
+  {
+    "filename": "Приказ № 01-01-013-05_25.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 35.45039645900397,
+    "attributes": {},
+    "error": "incoherent_ocr_text"
+  },
+  {
+    "filename": "Приказ № 01-01-014-05_25.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 38.79802999999811,
+    "attributes": {},
+    "error": "incoherent_ocr_text"
+  },
+  {
+    "filename": "Приказ № 01-01-032-19_26.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 55.68928745899757,
+    "attributes": {},
+    "error": "incoherent_ocr_text"
+  },
+  {
+    "filename": "Приказ № 01-01-033-19_26.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "ORDER",
+    "type_correct": true,
+    "type_confidence": 0.98,
+    "requires_manual_review": true,
+    "processing_time_sec": 82.86093112499657,
+    "attributes": {},
+    "error": null
+  },
+  {
+    "filename": "Приказ № 01-01-142_01-48_25.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "ORDER",
+    "type_correct": true,
+    "type_confidence": 0.95,
+    "requires_manual_review": true,
+    "processing_time_sec": 51.626343208001344,
+    "attributes": {},
+    "error": null
+  },
+  {
+    "filename": "Приказ № 22-01-011-07_26.pdf",
+    "expected_type": "ORDER",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 48.659014917000604,
+    "attributes": {},
+    "error": "low_ocr_confidence"
   },
   {
     "filename": "ОПЛАЧЕНО_ПТС_АКТ_сч факт_СБИС_апр  2023_2 952 112,53.pdf",
@@ -306,7 +427,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": false,
-    "processing_time_sec": 51.27132533300028,
+    "processing_time_sec": 41.31649091600411,
     "attributes": {
       "invoice_number": {
         "expected": "760050034934/7190",
@@ -334,6 +455,174 @@
       },
       "amount_with_vat": {
         "expected": "2952112.53",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "000563.pdf",
+    "expected_type": "PAYMENT",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 51.814564000000246,
+    "attributes": {
+      "document_number": {
+        "expected": "77146",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "document_date": {
+        "expected": "2024-12-15",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "payer_name": {
+        "expected": "ПАО СБЕРБАНК",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "payer_inn": {
+        "expected": "7707083893",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount": {
+        "expected": "985.00",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": "low_ocr_confidence"
+  },
+  {
+    "filename": "000568.pdf",
+    "expected_type": "PAYMENT",
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": true,
+    "processing_time_sec": 41.225088125000184,
+    "attributes": {
+      "document_number": {
+        "expected": "317670",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "document_date": {
+        "expected": "2024-12-14",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "payer_name": {
+        "expected": "ПАО СБЕРБАНК",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "payer_inn": {
+        "expected": "7707083893",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount": {
+        "expected": "1669.43",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      }
+    },
+    "error": "low_ocr_confidence"
+  },
+  {
+    "filename": "000570.pdf",
+    "expected_type": "PAYMENT",
+    "predicted_type": "PAYMENT",
+    "type_correct": true,
+    "type_confidence": 0.98,
+    "requires_manual_review": true,
+    "processing_time_sec": 84.37827500000276,
+    "attributes": {
+      "document_number": {
+        "expected": "261479",
+        "extracted": "261479",
+        "match": true,
+        "confidence": 0.9697674185499068
+      },
+      "document_date": {
+        "expected": "2024-12-14",
+        "extracted": "2025-02-06",
+        "match": false,
+        "confidence": 0.9637674185499068
+      },
+      "payer_name": {
+        "expected": "ПАО СБЕРБАНК",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "payer_inn": {
+        "expected": "7707083893",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "amount": {
+        "expected": "1792.72",
+        "extracted": "1820.02",
+        "match": false,
+        "confidence": 0.9577674185499068
+      }
+    },
+    "error": null
+  },
+  {
+    "filename": "000583.pdf",
+    "expected_type": "PAYMENT",
+    "predicted_type": "PAYMENT",
+    "type_correct": true,
+    "type_confidence": 0.95,
+    "requires_manual_review": true,
+    "processing_time_sec": 104.07662395800435,
+    "attributes": {
+      "document_number": {
+        "expected": "76834",
+        "extracted": "768З4",
+        "match": true,
+        "confidence": 0.9690649440288543
+      },
+      "document_date": {
+        "expected": "2024-12-14",
+        "extracted": "2024-12-14",
+        "match": true,
+        "confidence": 0.9690649440288543
+      },
+      "payer_name": {
+        "expected": "ПАО СБЕРБАНК",
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
+      },
+      "payer_inn": {
+        "expected": "7707083893",
+        "extracted": "1982199140835",
+        "match": false,
+        "confidence": 0.7930649440288544
+      },
+      "amount": {
+        "expected": "3010.74",
         "extracted": null,
         "match": false,
         "confidence": 0.0

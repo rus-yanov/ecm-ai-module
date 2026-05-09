@@ -1,10 +1,24 @@
-# ecm-ai-module
+<div align="center">
 
-Программный модуль интеллектуальной обработки входящих документов в ECM-системе средствами OCR и искусственного интеллекта.
+# ECM AI Module
 
-Разработан в рамках магистерской выпускной квалификационной работы (ВКР).  
-**НИУ ВШЭ · Факультет бизнеса и менеджмента · 2026**  
+### Интеллектуальная обработка входящих документов в ECM-системе
+
+**OCR · Классификация документов · Извлечение реквизитов · Confidence Routing**
+
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-latest-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Ollama](https://img.shields.io/badge/Qwen_2.5_7B-Ollama-FF6B35)](https://ollama.com)
+[![PaddleOCR](https://img.shields.io/badge/PaddleOCR-кириллица-0062B1)](https://github.com/PaddlePaddle/PaddleOCR)
+[![Лицензия](https://img.shields.io/badge/Лицензия-MIT-green)](LICENSE)
+
+---
+
+*Магистерская выпускная квалификационная работа*  
+**НИУ ВШЭ · Высшая Школа Бизнеса · 2026**  
 Автор: Ахмедзянов Р.Р.
+
+</div>
 
 ---
 
@@ -269,7 +283,7 @@ cat experiment/metrics_real.json
 Проект разработан в рамках ВКР по теме:  
 **«Интеллектуализация обработки документов в ECM-системе средствами OCR и искусственного интеллекта»**
 
-НИУ ВШЭ · Факультет бизнеса и менеджмента · Системный анализ · 2026
+НИУ ВШЭ · Высшая Школа Бизнеса · Эллектронный бизнес и цифровые инновации · 2026
 
 ---
 

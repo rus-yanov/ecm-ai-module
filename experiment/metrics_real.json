@@ -1,12 +1,12 @@
 {
   "type_classification": {
-    "overall_accuracy": 1.0,
+    "overall_accuracy": 0.6296,
     "per_type_accuracy": {
       "INVOICE": 1.0,
       "ACT": 1.0,
-      "ORDER": 1.0,
+      "ORDER": 0.4667,
       "WAYBILL": 1.0,
-      "PAYMENT": 0.0
+      "PAYMENT": 0.5
     },
     "confusion_matrix": {
       "INVOICE": {
@@ -28,10 +28,10 @@
       "ORDER": {
         "INVOICE": 0,
         "ACT": 0,
-        "ORDER": 4,
+        "ORDER": 7,
         "WAYBILL": 0,
         "PAYMENT": 0,
-        "UNKNOWN": 0
+        "UNKNOWN": 8
       },
       "WAYBILL": {
         "INVOICE": 0,
@@ -46,8 +46,8 @@
         "ACT": 0,
         "ORDER": 0,
         "WAYBILL": 0,
-        "PAYMENT": 0,
-        "UNKNOWN": 0
+        "PAYMENT": 2,
+        "UNKNOWN": 2
       }
     }
   },
@@ -139,28 +139,28 @@
       },
       "ORDER": {
         "order_date": {
-          "precision": 0.5,
-          "recall": 0.5,
-          "f1": 0.5,
-          "matched": 2,
+          "precision": 0.75,
+          "recall": 0.2,
+          "f1": 0.316,
+          "matched": 3,
           "extracted": 4,
-          "expected": 4
+          "expected": 15
         },
         "order_number": {
           "precision": 1.0,
-          "recall": 0.75,
-          "f1": 0.857,
+          "recall": 0.2,
+          "f1": 0.333,
           "matched": 3,
           "extracted": 3,
-          "expected": 4
+          "expected": 15
         },
         "title": {
           "precision": 0.75,
-          "recall": 0.75,
-          "f1": 0.75,
+          "recall": 0.2,
+          "f1": 0.316,
           "matched": 3,
           "extracted": 4,
-          "expected": 4
+          "expected": 15
         }
       },
       "WAYBILL": {
@@ -180,31 +180,74 @@
           "extracted": 5,
           "expected": 5
         }
+      },
+      "PAYMENT": {
+        "amount": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "matched": 0,
+          "extracted": 1,
+          "expected": 4
+        },
+        "document_date": {
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.333,
+          "matched": 1,
+          "extracted": 2,
+          "expected": 4
+        },
+        "document_number": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.667,
+          "matched": 2,
+          "extracted": 2,
+          "expected": 4
+        },
+        "payer_inn": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "matched": 0,
+          "extracted": 1,
+          "expected": 4
+        },
+        "payer_name": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "matched": 0,
+          "extracted": 0,
+          "expected": 4
+        }
       }
     },
     "avg_f1_per_type": {
       "INVOICE": 0.6,
       "ACT": 0.0,
-      "ORDER": 0.702,
-      "WAYBILL": 1.0
+      "ORDER": 0.322,
+      "WAYBILL": 1.0,
+      "PAYMENT": 0.2
     }
   },
   "confidence_calibration": {
-    "mean_confidence_correct": 0.93,
+    "mean_confidence_correct": 0.9441,
     "mean_confidence_incorrect": 0.0,
     "pct_correct_with_high_confidence": 1.0
   },
   "manual_review": {
-    "review_rate": 0.75,
-    "useful_flag_rate": 0.3333,
-    "total_flagged": 9,
-    "useful_flags": 3
+    "review_rate": 0.7778,
+    "useful_flag_rate": 0.2857,
+    "total_flagged": 21,
+    "useful_flags": 6
   },
   "performance": {
-    "mean_sec": 34.09,
-    "median_sec": 32.36,
-    "p95_sec": 51.27,
-    "pct_within_30s": 0.1667,
-    "total_docs": 12
+    "mean_sec": 46.63,
+    "median_sec": 41.23,
+    "p95_sec": 84.38,
+    "pct_within_30s": 0.08,
+    "total_docs": 27
   }
 }

@@ -204,5 +204,61 @@
       "seller_inn": "6315376946",
       "amount_with_vat": "2952112.53"
     }
+  },
+  {
+    "filename": "000563.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/платежное поручение/000563.pdf",
+    "document_type": "PAYMENT",
+    "is_scan": true,
+    "source": "scan",
+    "attributes": {
+      "document_number": "77146",
+      "document_date": "2024-12-15",
+      "payer_name": "ПАО СБЕРБАНК",
+      "payer_inn": "7707083893",
+      "amount": "985.00"
+    }
+  },
+  {
+    "filename": "000568.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/платежное поручение/000568.pdf",
+    "document_type": "PAYMENT",
+    "is_scan": true,
+    "source": "scan",
+    "attributes": {
+      "document_number": "317670",
+      "document_date": "2024-12-14",
+      "payer_name": "ПАО СБЕРБАНК",
+      "payer_inn": "7707083893",
+      "amount": "1669.43"
+    }
+  },
+  {
+    "filename": "000570.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/платежное поручение/000570.pdf",
+    "document_type": "PAYMENT",
+    "is_scan": true,
+    "source": "scan",
+    "attributes": {
+      "document_number": "261479",
+      "document_date": "2024-12-14",
+      "payer_name": "ПАО СБЕРБАНК",
+      "payer_inn": "7707083893",
+      "amount": "1792.72"
+    }
+  },
+  {
+    "filename": "000583.pdf",
+    "filepath": "/Users/rustamakhmedzianov/Downloads/мага/вкр/ВКР/образцы документов/платежное поручение/000583.pdf",
+    "document_type": "PAYMENT",
+    "is_scan": true,
+    "source": "scan",
+    "attributes": {
+      "document_number": "76834",
+      "document_date": "2024-12-14",
+      "payer_name": "ПАО СБЕРБАНК",
+      "payer_inn": "7707083893",
+      "amount": "3010.74"
+    }
   }
 ]
