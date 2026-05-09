@@ -98,7 +98,7 @@ HTTP Request (PDF/image/txt)
 - [uv](https://docs.astral.sh/uv/getting-started/installation/) — менеджер пакетов
 - [Ollama](https://ollama.com/download) — для запуска LLM
 - Модель: `ollama pull qwen2.5:7b-instruct-q4_K_M`
-- RAM: минимум 8 ГБ (рекомендуется 16 ГБ для комфортной работы)
+- RAM: минимум 16 ГБ (рекомендуется 32 ГБ для комфортной работы)
 
 ---
 
