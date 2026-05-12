@@ -149,9 +149,21 @@ curl http://localhost:8001/healthz
 
 ---
 
-## Использование
+## API
 
-### Обработка документа через API
+### Входящие запросы (модуль принимает)
+
+| Метод | Путь | Описание |
+|-------|------|----------|
+| `GET` | `/healthz` | Проверка работоспособности |
+| `POST` | `/api/v1/documents/process` | Обработка документа |
+
+**POST /api/v1/documents/process** — принимает `multipart/form-data`:
+
+| Поле | Тип | Описание |
+|------|-----|----------|
+| `file` | файл | PDF, изображение или текстовый файл |
+| `schema_id` | строка | Тип документа: `act`, `waybill`, `order`, `invoice`, `payment` |
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/documents/process \
@@ -159,7 +171,7 @@ curl -X POST http://localhost:8000/api/v1/documents/process \
   -F "schema_id=act"
 ```
 
-### Пример ответа
+**Пример ответа:**
 
 ```json
 {
@@ -175,6 +187,16 @@ curl -X POST http://localhost:8000/api/v1/documents/process \
   "total_processing_time_sec": 31.4
 }
 ```
+
+### Исходящие запросы (модуль отправляет в ECM)
+
+| Метод | Путь | Описание |
+|-------|------|----------|
+| `GET` | `/schemas/{schema_id}` | Получить схему атрибутов для типа документа |
+| `GET` | `/dictionaries/{name}` | Получить справочник (контрагенты и др.) |
+| `POST` | `/cards` | Создать карточку документа в ECM |
+
+Все запросы к ECM отправляются с заголовком `X-API-Key` и имеют retry-логику: до 3 повторных попыток с задержками 1 → 3 → 9 с.
 
 ---
 
