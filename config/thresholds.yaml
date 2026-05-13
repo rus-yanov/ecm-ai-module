@@ -1,6 +1,6 @@
 default:
   review_threshold: 0.7
-  ocr_min_confidence: 0.6
+  ocr_min_confidence: 0.25
 document_types:
   PAYMENT:
     attributes:
