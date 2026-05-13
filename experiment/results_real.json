@@ -6,7 +6,7 @@
     "type_correct": true,
     "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 33.08648812500178,
+    "processing_time_sec": 37.955480665987125,
     "attributes": {
       "act_number": {
         "expected": "15",
@@ -48,7 +48,7 @@
     "type_correct": true,
     "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 30.88377637499798,
+    "processing_time_sec": 35.50986779201776,
     "attributes": {
       "act_date": {
         "expected": "2022-01-18",
@@ -72,7 +72,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": false,
-    "processing_time_sec": 32.73404595899774,
+    "processing_time_sec": 39.5633803329838,
     "attributes": {
       "document_number": {
         "expected": "77",
@@ -96,7 +96,7 @@
     "type_correct": true,
     "type_confidence": 0.93,
     "requires_manual_review": true,
-    "processing_time_sec": 32.52089474999957,
+    "processing_time_sec": 34.98405883400119,
     "attributes": {
       "document_number": {
         "expected": "109",
@@ -120,7 +120,7 @@
     "type_correct": true,
     "type_confidence": 0.92,
     "requires_manual_review": true,
-    "processing_time_sec": 30.666079791997618,
+    "processing_time_sec": 34.96565020800335,
     "attributes": {
       "document_number": {
         "expected": "570/374",
@@ -142,9 +142,9 @@
     "expected_type": "WAYBILL",
     "predicted_type": "WAYBILL",
     "type_correct": true,
-    "type_confidence": 0.93,
+    "type_confidence": 0.85,
     "requires_manual_review": true,
-    "processing_time_sec": 29.723437208005635,
+    "processing_time_sec": 33.78041070798645,
     "attributes": {
       "document_number": {
         "expected": "1479",
@@ -168,7 +168,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 38.56838787500601,
+    "processing_time_sec": 40.20787375001237,
     "attributes": {
       "document_number": {
         "expected": "398з",
@@ -192,7 +192,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 41.16176375000214,
+    "processing_time_sec": 42.24404695801786,
     "attributes": {
       "order_number": {
         "expected": "5-к",
@@ -222,7 +222,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 45.459244583995314,
+    "processing_time_sec": 50.81212712498382,
     "attributes": {},
     "error": "low_ocr_confidence"
   },
@@ -231,9 +231,9 @@
     "expected_type": "ORDER",
     "predicted_type": "ORDER",
     "type_correct": true,
-    "type_confidence": 0.95,
+    "type_confidence": 0.98,
     "requires_manual_review": true,
-    "processing_time_sec": 61.923540208001214,
+    "processing_time_sec": 58.666229208989535,
     "attributes": {},
     "error": null
   },
@@ -255,7 +255,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 29.762570416998642,
+    "processing_time_sec": 38.187143334012944,
     "attributes": {},
     "error": "incoherent_ocr_text"
   },
@@ -273,32 +273,32 @@
   {
     "filename": "Приказ о завершении освоения образовательной программы_ЭБЦИ_2026.pdf",
     "expected_type": "ORDER",
-    "predicted_type": "ORDER",
-    "type_correct": true,
-    "type_confidence": 0.99,
-    "requires_manual_review": true,
-    "processing_time_sec": 47.36126420900109,
+    "predicted_type": null,
+    "type_correct": false,
+    "type_confidence": 0.0,
+    "requires_manual_review": false,
+    "processing_time_sec": 0.0,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/200426-3",
-        "extracted": "2.10-02/200426-3",
-        "match": true,
-        "confidence": 0.994
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       },
       "order_date": {
         "expected": "2026-04-20",
-        "extracted": "2026-04-20",
-        "match": true,
-        "confidence": 0.994
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       },
       "title": {
         "expected": "О завершении освоения образовательной программы «Электронный бизнес и",
-        "extracted": "О завершении освоения образовательной программы «Электронный бизнес и цифровые инновации» Высшей школы бизнеса",
-        "match": true,
-        "confidence": 0.982
+        "extracted": null,
+        "match": false,
+        "confidence": 0.0
       }
     },
-    "error": null
+    "error": "[Errno 54] Connection reset by peer"
   },
   {
     "filename": "Приказ о проведении ГИА студентов_ЭБЦИ_2026.pdf",
@@ -307,7 +307,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": false,
-    "processing_time_sec": 43.35526941699936,
+    "processing_time_sec": 63.26825487500173,
     "attributes": {
       "order_number": {
         "expected": "2.10-02/300426-5",
@@ -337,7 +337,7 @@
     "type_correct": true,
     "type_confidence": 0.99,
     "requires_manual_review": false,
-    "processing_time_sec": 32.558560083001794,
+    "processing_time_sec": 32.32979558300576,
     "attributes": {
       "order_date": {
         "expected": "2026-04-28",
@@ -361,7 +361,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 35.45039645900397,
+    "processing_time_sec": 45.5266264170059,
     "attributes": {},
     "error": "incoherent_ocr_text"
   },
@@ -372,7 +372,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 38.79802999999811,
+    "processing_time_sec": 21.959301833005156,
     "attributes": {},
     "error": "incoherent_ocr_text"
   },
@@ -383,20 +383,20 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 55.68928745899757,
+    "processing_time_sec": 42.768571916007204,
     "attributes": {},
     "error": "incoherent_ocr_text"
   },
   {
     "filename": "Приказ № 01-01-033-19_26.pdf",
     "expected_type": "ORDER",
-    "predicted_type": "ORDER",
-    "type_correct": true,
-    "type_confidence": 0.98,
+    "predicted_type": "UNKNOWN",
+    "type_correct": false,
+    "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 82.86093112499657,
+    "processing_time_sec": 49.52150229201652,
     "attributes": {},
-    "error": null
+    "error": "low_ocr_confidence"
   },
   {
     "filename": "Приказ № 01-01-142_01-48_25.pdf",
@@ -405,7 +405,7 @@
     "type_correct": true,
     "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 51.626343208001344,
+    "processing_time_sec": 63.581778249994386,
     "attributes": {},
     "error": null
   },
@@ -416,7 +416,7 @@
     "type_correct": false,
     "type_confidence": 0.0,
     "requires_manual_review": true,
-    "processing_time_sec": 48.659014917000604,
+    "processing_time_sec": 45.21579900002689,
     "attributes": {},
     "error": "low_ocr_confidence"
   },
@@ -427,7 +427,7 @@
     "type_correct": true,
     "type_confidence": 0.98,
     "requires_manual_review": false,
-    "processing_time_sec": 41.31649091600411,
+    "processing_time_sec": 47.42786208400503,
     "attributes": {
       "invoice_number": {
         "expected": "760050034934/7190",
@@ -445,7 +445,7 @@
         "expected": "Публичное акционерное общество «Т Плюс»",
         "extracted": "Публичное акционерное общество «Т Плюс»",
         "match": true,
-        "confidence": 0.976
+        "confidence": 1.0
       },
       "seller_inn": {
         "expected": "6315376946",
@@ -465,35 +465,35 @@
   {
     "filename": "000563.pdf",
     "expected_type": "PAYMENT",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
+    "predicted_type": "PAYMENT",
+    "type_correct": true,
+    "type_confidence": 0.95,
     "requires_manual_review": true,
-    "processing_time_sec": 51.814564000000246,
+    "processing_time_sec": 78.78743379100342,
     "attributes": {
       "document_number": {
         "expected": "77146",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "77146",
+        "match": true,
+        "confidence": 0.9533484954968576
       },
       "document_date": {
         "expected": "2024-12-15",
-        "extracted": null,
+        "extracted": "2025-02-06",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.9473484954968576
       },
       "payer_name": {
         "expected": "ПАО СБЕРБАНК",
-        "extracted": null,
+        "extracted": "ПАО СБЕРБАНК//КУНГУРОВА ЛЮБОВЬ",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.9413484954968576
       },
       "payer_inn": {
         "expected": "7707083893",
         "extracted": null,
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.15934849549685756
       },
       "amount": {
         "expected": "985.00",
@@ -502,40 +502,40 @@
         "confidence": 0.0
       }
     },
-    "error": "low_ocr_confidence"
+    "error": null
   },
   {
     "filename": "000568.pdf",
     "expected_type": "PAYMENT",
-    "predicted_type": "UNKNOWN",
-    "type_correct": false,
-    "type_confidence": 0.0,
+    "predicted_type": "PAYMENT",
+    "type_correct": true,
+    "type_confidence": 0.98,
     "requires_manual_review": true,
-    "processing_time_sec": 41.225088125000184,
+    "processing_time_sec": 80.34454287501285,
     "attributes": {
       "document_number": {
         "expected": "317670",
-        "extracted": null,
-        "match": false,
-        "confidence": 0.0
+        "extracted": "З17670",
+        "match": true,
+        "confidence": 0.9683019974790514
       },
       "document_date": {
         "expected": "2024-12-14",
-        "extracted": null,
+        "extracted": "2024-12-15",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.9623019974790514
       },
       "payer_name": {
         "expected": "ПАО СБЕРБАНК",
-        "extracted": null,
+        "extracted": "ПАО СБЕРБАНК//БОЧКАРЕВА ЕЛЕНА",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.9563019974790514
       },
       "payer_inn": {
         "expected": "7707083893",
         "extracted": null,
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.17430199747905137
       },
       "amount": {
         "expected": "1669.43",
@@ -544,7 +544,7 @@
         "confidence": 0.0
       }
     },
-    "error": "low_ocr_confidence"
+    "error": null
   },
   {
     "filename": "000570.pdf",
@@ -552,8 +552,8 @@
     "predicted_type": "PAYMENT",
     "type_correct": true,
     "type_confidence": 0.98,
-    "requires_manual_review": true,
-    "processing_time_sec": 84.37827500000276,
+    "requires_manual_review": false,
+    "processing_time_sec": 91.3005642920034,
     "attributes": {
       "document_number": {
         "expected": "261479",
@@ -569,9 +569,9 @@
       },
       "payer_name": {
         "expected": "ПАО СБЕРБАНК",
-        "extracted": null,
+        "extracted": "ПАО СБЕРБАНК//ЛЕКОМЦЕВА ОЛЬГА",
         "match": false,
-        "confidence": 0.0
+        "confidence": 0.9457674185499068
       },
       "payer_inn": {
         "expected": "7707083893",
@@ -594,8 +594,8 @@
     "predicted_type": "PAYMENT",
     "type_correct": true,
     "type_confidence": 0.95,
-    "requires_manual_review": true,
-    "processing_time_sec": 104.07662395800435,
+    "requires_manual_review": false,
+    "processing_time_sec": 112.04128437500913,
     "attributes": {
       "document_number": {
         "expected": "76834",
@@ -617,9 +617,9 @@
       },
       "payer_inn": {
         "expected": "7707083893",
-        "extracted": "1982199140835",
+        "extracted": null,
         "match": false,
-        "confidence": 0.7930649440288544
+        "confidence": 0.0
       },
       "amount": {
         "expected": "3010.74",

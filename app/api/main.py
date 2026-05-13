@@ -6,7 +6,7 @@ from contextlib import asynccontextmanager
 from typing import Annotated, AsyncGenerator
 
 import structlog
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, HTTPException, UploadFile
 
 from app.config.settings import settings
 
@@ -73,7 +73,6 @@ async def healthz() -> dict:
 @app.post("/api/v1/documents/process")
 async def process_document(
     file: Annotated[UploadFile, File()],
-    schema_id: Annotated[str, Form()] = "payment",
 ) -> dict:
     import asyncio
 
@@ -89,7 +88,7 @@ async def process_document(
     start = time.monotonic()
 
     try:
-        log.info("processing_started", filename=file.filename, schema_id=schema_id)
+        log.info("processing_started", filename=file.filename)
 
         # --- 1. Read & validate file size ---
         file_bytes = await file.read()
@@ -157,14 +156,14 @@ async def process_document(
             )
             return result.model_dump(mode="json")
 
-        # --- 5. ECM: schema + contractor dictionary ---
+        # --- 5. ECM: contractor dictionary ---
         ecm = EcmAdapter()
-        schema, contractors = await _gather_ecm(ecm, schema_id)
+        contractors = await ecm.get_dictionary("contractors")
 
         # --- 7. LLM classification + extraction (hard timeout = ollama_timeout_sec + 30 s) ---
         try:
             doc_type, type_conf, raw_attrs = await asyncio.wait_for(
-                LlmService().classify_and_extract(full_text, schema, document_id=document_id),
+                LlmService().classify_and_extract(full_text, document_id=document_id),
                 timeout=float(settings.ollama_timeout_sec) + 30.0,
             )
         except asyncio.TimeoutError:
@@ -206,11 +205,3 @@ async def process_document(
         raise HTTPException(status_code=500, detail="internal_error")
 
 
-async def _gather_ecm(ecm, schema_id: str) -> tuple[dict, list[str]]:
-    import asyncio
-
-    schema, contractors = await asyncio.gather(
-        ecm.get_schema(schema_id),
-        ecm.get_dictionary("contractors"),
-    )
-    return schema, contractors

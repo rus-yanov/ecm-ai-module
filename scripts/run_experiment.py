@@ -35,15 +35,6 @@ THRESHOLDS_PATH = ROOT / "config" / "thresholds.yaml"
 API_BASE = "http://localhost:8000"
 ECM_BASE = "http://localhost:8001"
 
-# Document type → schema_id for the API form field
-_SCHEMA_ID: dict[str, str] = {
-    "INVOICE": "invoice",
-    "ACT": "act",
-    "ORDER": "order",
-    "WAYBILL": "waybill",
-    "PAYMENT": "payment",
-}
-
 # Semantic field-type detection for comparison logic
 _DATE_KEYWORDS = {"date", "deadline"}
 _AMOUNT_KEYWORDS = {"amount", "sum", "total", "vat"}
@@ -173,7 +164,6 @@ def process_document(
 ) -> dict:
     """POST one scanned PDF to the API and return a structured result record."""
     scan_path = CORPUS_DIR / "scanned" / filename
-    schema_id = _SCHEMA_ID.get(expected_type, expected_type.lower())
 
     try:
         with scan_path.open("rb") as fh:
@@ -181,7 +171,6 @@ def process_document(
             response = client.post(
                 f"{API_BASE}/api/v1/documents/process",
                 files={"file": (filename, fh, "application/pdf")},
-                data={"schema_id": schema_id},
                 timeout=90.0,
             )
             elapsed = time.monotonic() - t0
@@ -208,7 +197,6 @@ def process_document_raw(
 
     raw_filename = filename.replace(".pdf", "_raw.pdf")
     raw_path = CORPUS_DIR / "raw" / raw_filename
-    schema_id = _SCHEMA_ID.get(expected_type, expected_type.lower())
     txt_filename = filename.replace(".pdf", ".txt")
 
     try:
@@ -221,7 +209,6 @@ def process_document_raw(
         response = client.post(
             f"{API_BASE}/api/v1/documents/process",
             files={"file": (txt_filename, text.encode("utf-8"), "text/plain")},
-            data={"schema_id": schema_id},
             timeout=150.0,
         )
         elapsed = time.monotonic() - t0
@@ -250,7 +237,6 @@ def process_real_document(
     filename = entry["filename"]
     doc_type = entry["document_type"]
     expected_attrs = entry.get("attributes", {})
-    schema_id = _SCHEMA_ID.get(doc_type, doc_type.lower())
     is_scan = entry.get("is_scan", False)
 
     try:
@@ -260,7 +246,6 @@ def process_real_document(
             response = client.post(
                 f"{API_BASE}/api/v1/documents/process",
                 files={"file": (filename, data_bytes, "application/pdf")},
-                data={"schema_id": schema_id},
                 timeout=300.0,
             )
             elapsed = time.monotonic() - t0
@@ -274,7 +259,6 @@ def process_real_document(
             response = client.post(
                 f"{API_BASE}/api/v1/documents/process",
                 files={"file": (txt_name, text.encode("utf-8"), "text/plain")},
-                data={"schema_id": schema_id},
                 timeout=240.0,
             )
             elapsed = time.monotonic() - t0

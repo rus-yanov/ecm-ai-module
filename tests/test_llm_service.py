@@ -18,7 +18,7 @@ _PAYMENT_TEXT = """\
 async def test_classify_payment() -> None:
     service = LlmService()
     doc_type, type_confidence, attributes = await service.classify_and_extract(
-        _PAYMENT_TEXT, {}
+        _PAYMENT_TEXT
     )
 
     assert doc_type == DocumentType.PAYMENT, f"Expected PAYMENT, got {doc_type}"

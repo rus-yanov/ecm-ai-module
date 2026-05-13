@@ -189,7 +189,7 @@ class LlmService:
     # Prompt construction
     # ------------------------------------------------------------------
 
-    def _build_prompt(self, text: str, schema: dict) -> str:  # noqa: ARG002
+    def _build_prompt(self, text: str) -> str:
         block1 = (
             "You are a document analysis system for a Russian ECM platform.\n"
             "Extract structured information from the document text provided.\n"
@@ -261,7 +261,7 @@ class LlmService:
     # ------------------------------------------------------------------
 
     async def classify_and_extract(
-        self, text: str, schema: dict, document_id: str = ""
+        self, text: str, document_id: str = ""
     ) -> tuple[DocumentType, float, list[ExtractedAttribute]]:
         log = logger.bind(document_id=document_id) if document_id else logger
 
@@ -288,7 +288,7 @@ class LlmService:
         if len(text) > MAX_TEXT_CHARS:
             text = text[:MAX_TEXT_CHARS] + "\n[ТЕКСТ УСЕЧЁН ДО 4000 СИМВОЛОВ]"
 
-        prompt = self._build_prompt(text, schema)
+        prompt = self._build_prompt(text)
         start = time.monotonic()
 
         try:
